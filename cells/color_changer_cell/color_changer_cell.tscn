@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvse80ar1ae2"]
+
+[ext_resource type="Script" uid="uid://bi671skh7xrtu" path="res://cells/color_changer_cell/color_changer_cell.gd" id="1_gua6d"]
+[ext_resource type="Texture2D" uid="uid://cxgwks3nmlx3n" path="res://icon.svg" id="2_djnmc"]
+
+[node name="ColorChangerCell" type="Node2D"]
+script = ExtResource("1_gua6d")
+
+[node name="Icon" type="Sprite2D" parent="."]
+texture = ExtResource("2_djnmc")

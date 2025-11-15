@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://cwignklc4f46o"]
+[gd_scene load_steps=2 format=3 uid="uid://cwignklc4f46o"]
+
+[ext_resource type="Script" uid="uid://coyxh2o41gost" path="res://cells/base_cell.gd" id="1_yxt2q"]
 
 [node name="BaseCell" type="Node2D"]
+script = ExtResource("1_yxt2q")

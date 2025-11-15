@@ -1,16 +1,20 @@
+class_name Map
 extends Node2D
 
 const Cell := preload("res://cells/base_cell.gd")
 const BaseCellScene := preload("res://cells/base_cell.tscn")
+const DEFAULT_TILE_TEXTURE := preload("res://map/default_tile.png")
 const CELL_SIZE := 32.0
 
 @export_range(0, 100) var width: int = 0
 @export_range(0, 100) var height: int = 0
 
 var cells: Array[Cell] = []
+var tiles: Array[Texture] = []
 
 func _enter_tree():
 	cells.resize(width * height)
+	tiles.resize(width * height)
 	initialize_array()
 	
 # Dynamic resizing of the array. Also clears the array
@@ -20,6 +24,7 @@ func resize_array(dimension: int):
 	width = dimension
 	height = dimension
 	cells.resize(width * height)
+	tiles.resize(width * height)
 	
 	initialize_array()
 	
@@ -30,6 +35,7 @@ func clear_array():
 			c.queue_free()
 
 	cells.fill(null)
+	tiles.fill(DEFAULT_TILE_TEXTURE)
 
 # Sets every cell to be the base cell by default
 func initialize_array():
@@ -42,6 +48,8 @@ func initialize_array():
 			cell.position = Vector2(xy) * CELL_SIZE + Vector2.ONE * CELL_SIZE / 2.0
 
 			cells[xy_to_idx(xy)] = cell
+	
+	tiles.fill(DEFAULT_TILE_TEXTURE)
 
 ## Returns the cell at the position.
 ## Returns `null` if there is no cell of it is out of bounds. 
@@ -55,6 +63,11 @@ func set_at(pos: Vector2, cell: Cell):
 	var xy := pos_to_xy(pos)
 	if is_inbounds(xy):
 		cells[xy_to_idx(xy)] = cell
+
+func set_tile(pos: Vector2, txtr: Texture):
+	var xy := pos_to_xy(pos)
+	if is_inbounds(xy):
+		tiles[xy_to_idx(xy)] = txtr if txtr != null else DEFAULT_TILE_TEXTURE
 
 ## Returns the x and y index from the position.
 func pos_to_xy(pos: Vector2) -> Vector2i:
@@ -111,3 +124,11 @@ static func direction_to_vector(d: int) -> Vector2i:
 6 - 110 = left
 7 - 111 = up/left
 """
+
+## Draws the tiles on the map.
+func _draw():
+	for x in width:
+		for y in height:
+			var xy := Vector2i(x, y)
+			var pos := Vector2(xy) * CELL_SIZE + Vector2.ONE * CELL_SIZE / 2.0
+			draw_texture(tiles[xy_to_idx(xy)], pos)

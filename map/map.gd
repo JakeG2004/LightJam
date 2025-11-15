@@ -25,3 +25,8 @@ func xy_to_idx(xy: Vector2i) -> int:
 # Returns `true` if the x and y is in the bounds of the map.
 func is_inbounds(xy: Vector2i) -> bool:
 	return xy.x >= 0 && xy.x < width && xy.y >= 0 && xy.y < height
+
+# Returns the cell that the ray hits from the starting position to the direction.
+# Returns `null` if the ray hits nothing or out of bounds.
+func castray(start: Vector2, direction: float) -> Cell:
+	return null

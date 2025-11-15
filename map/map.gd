@@ -1,6 +1,7 @@
 extends Node2D
 
 const Cell := preload("res://cells/base_cell.gd")
+const BaseCellScene := preload("res://cells/base_cell.tscn")
 const CELL_SIZE := 32.0
 
 @export_range(0, 100) var width: int = 0
@@ -10,6 +11,37 @@ var cells: Array[Cell] = []
 
 func _enter_tree():
 	cells.resize(width * height)
+	initialize_array()
+	
+# Dynamic resizing of the array. Also clears the array
+func resize_array(dimension: int):
+	clear_array()
+	
+	width = dimension
+	height = dimension
+	cells.resize(width * height)
+	
+	initialize_array()
+	
+# Clears all of the old cells from the scene
+func clear_array():
+	for c in cells:
+		if c != null and c.is_inside_tree():
+			c.queue_free()
+
+	cells.fill(null)
+
+# Sets every cell to be the base cell by default
+func initialize_array():
+	for y in range(height):
+		for x in range(width):
+			var cell := BaseCellScene.instantiate()
+			add_child(cell)
+
+			var xy := Vector2i(x, y)
+			cell.position = xy_to_pos(xy)
+
+			cells[xy_to_idx(xy)] = cell
 
 ## Returns the cell at the position.
 ## Returns `null` if there is no cell of it is out of bounds. 

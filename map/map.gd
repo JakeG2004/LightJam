@@ -3,9 +3,10 @@ extends Node2D
 const Cell := preload("res://cells/base_cell.gd")
 const CELL_SIZE := 32.0
 
+@export_range(0, 100) var width: int = 0
+@export_range(0, 100) var height: int = 0
+
 var cells: Array[Cell] = []
-var width: int = 0
-var height: int = 0
 
 ## Returns the cell at the position.
 ## Returns `null` if there is no cell of it is out of bounds. 

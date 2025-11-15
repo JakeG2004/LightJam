@@ -5,3 +5,5 @@
 
 [node name="ShadowCell" instance=ExtResource("1_8y0w7")]
 script = ExtResource("2_nafpg")
+
+[node name="Icon" parent="." index="0" groups=["Enemies"]]

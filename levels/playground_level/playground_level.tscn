@@ -12,6 +12,7 @@ height = 20
 
 [node name="Player" parent="." index="1" instance=ExtResource("2_uay8w")]
 position = Vector2(144, 144)
+preview_laser_distance = 250
 
 [node name="ColorChangerCell" parent="." index="2" instance=ExtResource("3_j0c47")]
 position = Vector2(400, 144)

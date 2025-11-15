@@ -29,4 +29,13 @@ func is_inbounds(xy: Vector2i) -> bool:
 # Returns the cell that the ray hits from the starting position to the direction.
 # Returns `null` if the ray hits nothing or out of bounds.
 func castray(start: Vector2, direction: float) -> Cell:
+	var dir := Vector2i(Vector2.from_angle(direction).ceil())
+	var xy := pos_to_xy(start) + dir
+	
+	while is_inbounds(xy):
+		var cell := cells[xy_to_idx(xy)]
+		if cell != null:
+			return cell
+		xy += dir
+	
 	return null

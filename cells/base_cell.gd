@@ -7,10 +7,13 @@ const LaserScene = preload("res://laser/laser.tscn")
 # Publicly accessible variables
 @export var facing: int = 0
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func _enter_tree() -> void:
+	if Level.map:
+		Level.map.set_at(position, self)
 
+func _exit_tree():
+	if Level.map:
+		Level.map.set_at(position, null)
 
 # Get input laser. Default case is to pass it through
 func laser_in(in_laser: Laser) -> void:

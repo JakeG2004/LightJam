@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwkvntv8cpna0"]
+
+[ext_resource type="PackedScene" uid="uid://cisih7ral0pu4" path="res://levels/level.tscn" id="1_5fpvm"]
+[ext_resource type="PackedScene" uid="uid://cofps6xaq0fj" path="res://cells/player/player.tscn" id="2_uay8w"]
+[ext_resource type="PackedScene" uid="uid://cvse80ar1ae2" path="res://cells/color_changer_cell/color_changer_cell.tscn" id="3_j0c47"]
+
+[node name="PlaygroundLevel" instance=ExtResource("1_5fpvm")]
+
+[node name="Map" parent="." index="0"]
+width = 20
+height = 20
+
+[node name="Player" parent="." index="1" instance=ExtResource("2_uay8w")]
+position = Vector2(144, 144)
+
+[node name="ColorChangerCell" parent="." index="2" instance=ExtResource("3_j0c47")]
+position = Vector2(400, 144)

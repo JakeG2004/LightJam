@@ -1,3 +1,4 @@
+class_name Level
 extends Node2D
 
 const Map := preload("res://map/map.gd")
@@ -6,5 +7,5 @@ const Map := preload("res://map/map.gd")
 
 static var map: Map
 
-func _ready():
+func _enter_tree():
 	map = $Map

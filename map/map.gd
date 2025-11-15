@@ -8,12 +8,21 @@ const CELL_SIZE := 32.0
 
 var cells: Array[Cell] = []
 
+func _enter_tree():
+	cells.resize(width * height)
+
 ## Returns the cell at the position.
 ## Returns `null` if there is no cell of it is out of bounds. 
 func get_at(pos: Vector2) -> Cell:
 	var xy := pos_to_xy(pos)
 	var idx := xy_to_idx(xy)
 	return cells[idx] if is_inbounds(xy) else null
+
+## Sets the cell at the position, replacing any other cell at the position.
+func set_at(pos: Vector2, cell: Cell):
+	var xy := pos_to_xy(pos)
+	if is_inbounds(xy):
+		cells[xy_to_idx(xy)] = cell
 
 ## Returns the x and y index from the position.
 func pos_to_xy(pos: Vector2) -> Vector2i:
@@ -32,8 +41,8 @@ func is_inbounds(xy: Vector2i) -> bool:
 	return xy.x >= 0 && xy.x < width && xy.y >= 0 && xy.y < height
 
 ## Returns the cell that the ray hits from the starting position to the direction.
-func castray(start: Vector2, direction: float) -> Vector2:
-	var dir := Vector2i(Vector2.from_angle(direction).ceil())
+func castray(start: Vector2, direction: int) -> Vector2:
+	var dir := direction_to_vector(direction)
 	var xy := pos_to_xy(start) + dir
 	
 	while is_inbounds(xy):
@@ -43,3 +52,29 @@ func castray(start: Vector2, direction: float) -> Vector2:
 		xy += dir
 	
 	return xy_to_pos(xy)
+
+# Returns the vector form of the direction.
+static func direction_to_vector(d: int) -> Vector2i:
+	d = posmod(d, 8)
+	# sloppy, but works :)
+	match d:
+		0: return Vector2i.UP
+		1: return Vector2i.UP + Vector2i.RIGHT
+		2: return Vector2i.RIGHT
+		3: return Vector2i.DOWN + Vector2i.RIGHT
+		4: return Vector2i.DOWN
+		5: return Vector2i.DOWN + Vector2i.LEFT
+		6: return Vector2i.LEFT
+		7: return Vector2i.UP + Vector2i.LEFT
+	return Vector2i.UP
+
+"""
+0 - 000 = up
+1 - 001 = up/right
+2 - 010 = right
+3 - 011 = down/right
+4 - 100 = down
+5 - 101 = down/left
+6 - 110 = left
+7 - 111 = up/left
+"""

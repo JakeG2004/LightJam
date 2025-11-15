@@ -36,6 +36,7 @@ func clear_array():
 
 	cells.fill(null)
 	tiles.fill(DEFAULT_TILE_TEXTURE)
+	queue_redraw()
 
 # Sets every cell to be the base cell by default
 func initialize_array():
@@ -50,6 +51,7 @@ func initialize_array():
 			cells[xy_to_idx(xy)] = cell
 	
 	tiles.fill(DEFAULT_TILE_TEXTURE)
+	queue_redraw()
 
 ## Returns the cell at the position.
 ## Returns `null` if there is no cell of it is out of bounds. 
@@ -68,6 +70,7 @@ func set_tile(pos: Vector2, txtr: Texture):
 	var xy := pos_to_xy(pos)
 	if is_inbounds(xy):
 		tiles[xy_to_idx(xy)] = txtr if txtr != null else DEFAULT_TILE_TEXTURE
+		queue_redraw()
 
 ## Returns the x and y index from the position.
 func pos_to_xy(pos: Vector2) -> Vector2i:

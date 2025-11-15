@@ -2,6 +2,6 @@
 
 [ext_resource type="Script" uid="uid://b5flgxsm861mf" path="res://laser/laser.gd" id="1_208yb"]
 
-[node name="Laser" type="Node2D"]
+[node name="Laser" type="Node2D" groups=["Laser"]]
 script = ExtResource("1_208yb")
 end_pos = Vector2(100, 0)

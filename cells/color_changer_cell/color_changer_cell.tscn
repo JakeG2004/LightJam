@@ -7,4 +7,5 @@
 script = ExtResource("1_gua6d")
 
 [node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 1, 1)
 texture = ExtResource("2_djnmc")

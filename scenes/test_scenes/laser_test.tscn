@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2xt5aorywr4a"]
+
+[ext_resource type="Script" uid="uid://dlbyspndejmwd" path="res://test_scripts/laser_and_cell_test_script.gd" id="1_l2oao"]
+[ext_resource type="PackedScene" uid="uid://c4q6yy8ped186" path="res://laser/laser.tscn" id="1_y13bv"]
+[ext_resource type="PackedScene" uid="uid://cwignklc4f46o" path="res://cells/base_cell.tscn" id="3_g6dd2"]
+[ext_resource type="PackedScene" uid="uid://cvse80ar1ae2" path="res://cells/color_changer_cell/color_changer_cell.tscn" id="4_l2oao"]
+
+[node name="LaserDrawTest" type="Node2D" node_paths=PackedStringArray("initial_laser", "base_cell")]
+script = ExtResource("1_l2oao")
+initial_laser = NodePath("Laser")
+base_cell = NodePath("BaseCell")
+
+[node name="RedrawLaser" type="Button" parent="."]
+offset_right = 169.0
+offset_bottom = 31.0
+text = "Queue Laser Redraw"
+
+[node name="SimulateCellHit" type="Button" parent="."]
+offset_left = 200.0
+offset_right = 369.0
+offset_bottom = 31.0
+text = "Simulate Cell Hit"
+
+[node name="SimulateColorCellHit" type="Button" parent="."]
+offset_left = 405.0
+offset_right = 574.0
+offset_bottom = 31.0
+text = "Simulate Color Cell Hit"
+
+[node name="Laser" parent="." instance=ExtResource("1_y13bv")]
+position = Vector2(469, 209)
+color = Color(0.77720153, 0.6050006, 0.5977141, 1)
+end_pos = Vector2(100, 100)
+
+[node name="BaseCell" parent="." instance=ExtResource("3_g6dd2")]
+position = Vector2(272, 300)
+
+[node name="ColorCell" parent="." instance=ExtResource("4_l2oao")]
+position = Vector2(652, 311)
+
+[connection signal="pressed" from="RedrawLaser" to="." method="RedrawAllLasers"]
+[connection signal="pressed" from="SimulateCellHit" to="." method="SimulateLaserHit"]
+[connection signal="pressed" from="SimulateColorCellHit" to="." method="SimulateColorCellHit"]

@@ -19,5 +19,8 @@ func laser_out(direction: int, color: Color) -> Laser:
 	var out_laser: Laser = LaserScene.instantiate()
 	out_laser.direction = direction
 	out_laser.color = color
+	out_laser.global_position = self.global_position
+	
+	get_parent().add_child(out_laser)
 	
 	return out_laser

@@ -26,6 +26,7 @@ func set_at(pos: Vector2, cell: Cell):
 
 ## Returns the x and y index from the position.
 func pos_to_xy(pos: Vector2) -> Vector2i:
+	pos -= global_position
 	return Vector2i(floor(pos.x / CELL_SIZE), floor(pos.y / CELL_SIZE))
 
 ## Returns the array index of the x and y cell.
@@ -34,7 +35,7 @@ func xy_to_idx(xy: Vector2i) -> int:
 
 ## Returns the position of the x and y cell.
 func xy_to_pos(xy: Vector2i) -> Vector2:
-	return Vector2(xy) * CELL_SIZE + Vector2.ONE * CELL_SIZE / 2.0
+	return Vector2(xy) * CELL_SIZE + Vector2.ONE * CELL_SIZE / 2.0 + global_position
 
 ## Returns `true` if the x and y is in the bounds of the map.
 func is_inbounds(xy: Vector2i) -> bool:

@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://jxepbfhdx51v" path="res://cells/shadow_cell/shadow_cell.tscn" id="4_wdc5f"]
 
 [node name="PlaygroundLevel" instance=ExtResource("1_5fpvm")]
+position = Vector2(240, 80)
 
 [node name="Map" parent="." index="0"]
 width = 20

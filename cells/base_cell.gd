@@ -9,11 +9,11 @@ const LaserScene = preload("res://laser/laser.tscn")
 
 func _enter_tree() -> void:
 	if Level.map:
-		Level.map.set_at(position, self)
+		Level.map.set_at(global_position, self)
 
 func _exit_tree():
 	if Level.map:
-		Level.map.set_at(position, null)
+		Level.map.set_at(global_position, null)
 
 # Get input laser. Default case is to pass it through
 func laser_in(in_laser: Laser) -> void:
@@ -26,7 +26,7 @@ func laser_out(direction: int, color: Color, strength: int, offset: Vector2 = Ve
 	out_laser.direction = direction
 	out_laser.color = color
 	out_laser.strength = strength
-	out_laser.global_position = self.global_position + offset
+	out_laser.position = position + offset
 	
 	get_parent().add_child(out_laser)
 	

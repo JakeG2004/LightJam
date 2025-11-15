@@ -9,15 +9,12 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
+# Get input laser. Default case is to pass it through
 func laser_in(in_laser: Laser) -> void:
-	pass
+	laser_out(in_laser.direction, in_laser.color)
 	
 
+# Creates an output laser for the cell based on a given direction and color
 func laser_out(direction: int, color: Color) -> Laser:
 	var out_laser: Laser = LaserScene.instantiate()
 	out_laser.direction = direction

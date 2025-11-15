@@ -22,3 +22,8 @@ func on_enemy_death(enemy: Node):
 	enemies.erase(enemy)
 	if(enemies.size() <= 0):
 		GameEvents.next_level.emit()
+
+func save_as_scene(path: String):
+	var scene = PackedScene.new()
+	scene.pack(self)
+	ResourceSaver.save(scene, path)

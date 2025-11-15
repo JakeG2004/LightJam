@@ -39,7 +39,7 @@ func initialize_array():
 			add_child(cell)
 
 			var xy := Vector2i(x, y)
-			cell.position = xy_to_pos(xy)
+			cell.position = Vector2(xy) * CELL_SIZE + Vector2.ONE * CELL_SIZE / 2.0
 
 			cells[xy_to_idx(xy)] = cell
 

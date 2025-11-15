@@ -6,14 +6,18 @@ const Map := preload("res://map/map.gd")
 @export var title: String = "Level Title"
 
 static var map: Map
+static var instance
 var enemies: Array[Node]
 
 func _enter_tree():
 	map = $Map
-	
+	instance = self
+
 func _ready():
 	enemies = get_tree().get_nodes_in_group("Enemies")
-	
+	for enemy: ShadowCell in enemies:
+		enemy.died.connect(on_enemy_death)
+
 func on_enemy_death(enemy: Node):
 	enemies.erase(enemy)
 	if(enemies.size() <= 0):

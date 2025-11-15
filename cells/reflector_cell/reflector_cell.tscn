@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://s63plgwf5nnq"]
+
+[ext_resource type="Script" uid="uid://bak2toqbsreg" path="res://cells/reflector_cell/reflector_cell.gd" id="1_poiik"]
+[ext_resource type="Texture2D" uid="uid://cxgwks3nmlx3n" path="res://icon.svg" id="2_ypm0p"]
+
+[node name="ReflectorCell" type="Node2D"]
+script = ExtResource("1_poiik")
+
+[node name="Icon" type="Sprite2D" parent="."]
+texture = ExtResource("2_ypm0p")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1ux45jaynbxr"]
+
+[ext_resource type="Script" uid="uid://15edtk8jqyiu" path="res://cells/spreader_cell/spreader_cell.gd" id="1_j5l8g"]
+
+[node name="SpreaderCell" type="Node2D"]
+script = ExtResource("1_j5l8g")

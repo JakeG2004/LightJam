@@ -5,6 +5,12 @@ extends Node2D
 @export var end_pos: Vector2 = Vector2.ZERO
 @export var strength: int = 3
 
+# Laser strengths
+const NORMAL_STRENGTH: int = 3
+const WEAK_STRENGTH: int = 2
+const STRONG_STRENGTH: int = 4
+
+
 # Set the end position to be global for safety
 func _ready() -> void:
 	#set_end_pos(end_pos)

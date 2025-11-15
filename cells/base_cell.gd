@@ -1,3 +1,5 @@
+class_name BaseCell
+
 extends Node2D
 
 # Define laser type

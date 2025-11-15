@@ -72,6 +72,10 @@ func set_tile(pos: Vector2, txtr: Texture):
 		tiles[xy_to_idx(xy)] = txtr if txtr != null else DEFAULT_TILE_TEXTURE
 		queue_redraw()
 
+## Returns the position centered on grid cells.
+func fit_to_grid(pos: Vector2) -> Vector2:
+	return global_position + ((pos - global_position) / CELL_SIZE).floor() * CELL_SIZE + Vector2.ONE * CELL_SIZE / 2.0
+
 ## Returns the x and y index from the position.
 func pos_to_xy(pos: Vector2) -> Vector2i:
 	pos -= global_position

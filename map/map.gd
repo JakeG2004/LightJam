@@ -137,5 +137,5 @@ func _draw():
 	for x in width:
 		for y in height:
 			var xy := Vector2i(x, y)
-			var pos := Vector2(xy) * CELL_SIZE + Vector2.ONE * CELL_SIZE / 2.0
+			var pos := Vector2(xy) * CELL_SIZE
 			draw_texture(tiles[xy_to_idx(xy)], pos)

@@ -1,3 +1,5 @@
+class_name ReflectorCell
+
 extends "res://cells/base_cell.gd"
 
 # Get input laser. Default case is to pass it through

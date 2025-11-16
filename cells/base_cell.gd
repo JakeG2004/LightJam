@@ -1,3 +1,5 @@
+class_name Cell
+
 extends Node2D
 
 # Define laser type

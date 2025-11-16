@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlp70ajmmls06"
-path="res://.godot/imported/base_cell.png-d2f89c61a395e5a529c9f093ee46c9c2.ctex"
+uid="uid://274jr7c7k007"
+path="res://.godot/imported/reflector_cell.png-8c537db04cb3b9256137d81e6215b1c8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/base_cell.png"
-dest_files=["res://.godot/imported/base_cell.png-d2f89c61a395e5a529c9f093ee46c9c2.ctex"]
+source_file="res://cells/reflector_cell/reflector_cell.png"
+dest_files=["res://.godot/imported/reflector_cell.png-8c537db04cb3b9256137d81e6215b1c8.ctex"]
 
 [params]
 

@@ -65,8 +65,17 @@ func set_at(pos: Vector2, cell: Cell):
 	if is_inbounds(xy):
 		var idx := xy_to_idx(xy)
 		if cells[idx]:
-			cells[idx].free() # free instantly to avoid the 
+			cells[idx].queue_free() # free instantly to avoid the 
 		cells[idx] = cell
+
+func clear_at(pos: Vector2, cell: Cell):
+	var xy := pos_to_xy(pos)
+	var idx := xy_to_idx(xy)
+	if is_inbounds(xy) && cells[idx] == cell:
+		cells[idx] = null
+		#cells[idx] = BaseCellScene.instantiate()
+		#cells[idx].position = Vector2(xy) * CELL_SIZE + Vector2.ONE * CELL_SIZE / 2.0
+		#add_child(cells[idx])
 
 func set_tile(pos: Vector2, txtr: Texture):
 	var xy := pos_to_xy(pos)

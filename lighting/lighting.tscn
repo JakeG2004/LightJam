@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cusssfm3qfbco"]
+
+[ext_resource type="Script" uid="uid://c0jl1hyneeuen" path="res://lighting/light_lines.gd" id="1_htx0p"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hjsbj"]
+blend_mode = 3
+
+[node name="Lighting" type="SubViewportContainer"]
+material = SubResource("CanvasItemMaterial_hjsbj")
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="."]
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="Node2D" type="Node2D" parent="SubViewport"]
+script = ExtResource("1_htx0p")

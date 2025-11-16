@@ -4,4 +4,7 @@
 
 [node name="Laser" type="Node2D" groups=["Laser"]]
 script = ExtResource("1_208yb")
+color = null
+direction = null
 end_pos = Vector2(100, 0)
+strength = null

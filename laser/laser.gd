@@ -1,3 +1,4 @@
+class_name Laser
 extends Node2D
 
 @export var color: Color = Color.WHITE

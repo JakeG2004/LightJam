@@ -5,7 +5,9 @@ extends Node2D
 
 static var map: Map
 static var instance
+
 var enemies: Array[Node]
+@onready var viewport := $Lighting/SubViewport
 
 func _enter_tree():
 	map = $Map
@@ -35,3 +37,6 @@ func center_on_screen():
 		ProjectSettings.get_setting("display/window/size/viewport_height"),
 	)
 	global_position = (screen_size - map.render_size()) / 2.0
+	
+	if viewport.size != Vector2i(map.render_size()):
+		viewport.size = Vector2i(map.render_size())

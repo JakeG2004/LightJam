@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwkvntv8cpna0"]
+
+[ext_resource type="PackedScene" uid="uid://cisih7ral0pu4" path="res://levels/level.tscn" id="1_5fpvm"]
+[ext_resource type="PackedScene" uid="uid://cofps6xaq0fj" path="res://cells/player/player.tscn" id="2_uay8w"]
+[ext_resource type="PackedScene" uid="uid://cvse80ar1ae2" path="res://cells/color_changer_cell/color_changer_cell.tscn" id="3_j0c47"]
+[ext_resource type="PackedScene" uid="uid://jxepbfhdx51v" path="res://cells/shadow_cell/shadow_cell.tscn" id="4_wdc5f"]
+
+[node name="PlaygroundLevel" instance=ExtResource("1_5fpvm")]
+position = Vector2(144, 48)
+
+[node name="Map" parent="." index="0"]
+width = 20
+height = 20
+
+[node name="Player" parent="Map" index="0" instance=ExtResource("2_uay8w")]
+position = Vector2(144, 144)
+preview_laser_distance = 250
+
+[node name="ColorChangerCell" parent="Map" index="1" instance=ExtResource("3_j0c47")]
+position = Vector2(368, 368)
+
+[node name="ShadowCell" parent="Map" index="2" instance=ExtResource("4_wdc5f")]
+position = Vector2(432, 144)
+
+[node name="ShadowCell2" parent="Map" index="3" instance=ExtResource("4_wdc5f")]
+position = Vector2(144, 368)

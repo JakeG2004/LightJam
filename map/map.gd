@@ -41,7 +41,7 @@ func clear_array():
 func initialize_array():
 	for y in range(height):
 		for x in range(width):
-			var cell := BaseCellScene.instantiate()
+			var cell: Cell = load("res://cells/base_cell.tscn").instantiate()
 			add_child(cell)
 
 			var xy := Vector2i(x, y)

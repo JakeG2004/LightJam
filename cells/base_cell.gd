@@ -3,7 +3,7 @@ class_name Cell
 extends Node2D
 
 # Define laser type
-const LaserScene = preload("res://laser/laser.tscn")
+const LaserScene := preload("res://laser/laser.tscn")
 
 # Publicly accessible variables
 @export var facing: int = 0

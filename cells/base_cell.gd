@@ -16,6 +16,9 @@ func _enter_tree() -> void:
 func _exit_tree():
 	if Level.map:
 		Level.map.set_at(global_position, null)
+		
+func on_place():
+	pass
 
 # Get input laser. Default case is to pass it through
 func laser_in(in_laser: Laser) -> void:

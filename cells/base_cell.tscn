@@ -7,6 +7,6 @@
 script = ExtResource("1_yxt2q")
 
 [node name="Icon" type="Sprite2D" parent="."]
-visible = false
 modulate = Color(0, 1, 1, 1)
+z_index = -1
 texture = ExtResource("2_gleba")

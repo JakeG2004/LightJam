@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dah10nj20dgp4"]
+[gd_scene load_steps=3 format=3 uid="uid://dah10nj20dgp4"]
 
 [ext_resource type="Script" uid="uid://b1me1l8got1k5" path="res://cells/defocuser_cell/defocuser_cell.gd" id="1_njcxg"]
+[ext_resource type="Texture2D" uid="uid://bqlxkninclxdg" path="res://cells/defocuser_cell/defocuser_cell.png" id="2_stcut"]
 
 [node name="DefocuserCell" type="Node2D"]
 script = ExtResource("1_njcxg")
+
+[node name="DefocuserCell" type="Sprite2D" parent="."]
+texture = ExtResource("2_stcut")

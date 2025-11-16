@@ -1,6 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://b1ux45jaynbxr"]
+[gd_scene load_steps=5 format=3 uid="uid://b1ux45jaynbxr"]
 
 [ext_resource type="Script" uid="uid://15edtk8jqyiu" path="res://cells/spreader_cell/spreader_cell.gd" id="1_j5l8g"]
+[ext_resource type="Texture2D" uid="uid://kxayhck8xnub" path="res://cells/spreader_cell/spreader_cell_center.png" id="2_r8h52"]
+[ext_resource type="PackedScene" uid="uid://dfnox5hiug312" path="res://cells/spreader_cell/spreader_cell_right.tscn" id="3_6pnwk"]
+[ext_resource type="PackedScene" uid="uid://hvlvoqjm7o7w" path="res://cells/spreader_cell/spreader_cell_left.tscn" id="4_6yltg"]
 
 [node name="SpreaderCell" type="Node2D"]
 script = ExtResource("1_j5l8g")
+
+[node name="SpreaderCell" type="Sprite2D" parent="."]
+texture = ExtResource("2_r8h52")
+
+[node name="SpreaderCellRight" parent="." instance=ExtResource("3_6pnwk")]
+position = Vector2(32, 0)
+
+[node name="SpreaderCellLeft" parent="." instance=ExtResource("4_6yltg")]
+position = Vector2(-32, 0)

@@ -24,16 +24,27 @@ func rotate_piece():
 	var child: Cell = get_child(0)
 	child.facing += (child.set_direction_in_bounds(child.facing + 2))
 	child.rotate(-PI / 2)
+	
+func change_piece_color():
+	if(get_child_count() <= 0):
+		return
+		
+	var child: Cell = get_child(0)
+	child.change_color()
 
 func _input(event):
 	if event is InputEventMouseButton and event.pressed:
-		if event.button_index == MOUSE_BUTTON_LEFT && get_child_count() > 0 :
+		if event.button_index == MOUSE_BUTTON_LEFT && get_child_count() > 0 && map.is_inbounds_at(global_position):
 			var child: Cell = get_child(0)
 			map.set_at(global_position, child)
 			child.reparent(map)
+			child.on_place()
 			
 	if event is InputEventKey:
 		# Get R Keycode to rotate object
 		if event.pressed and event.keycode == KEY_R:
 			rotate_piece()
+			
+		if event.pressed and event.keycode == KEY_C:
+			change_piece_color()
 			

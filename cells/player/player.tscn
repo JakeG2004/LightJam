@@ -1,10 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://cofps6xaq0fj"]
+[gd_scene load_steps=4 format=3 uid="uid://cofps6xaq0fj"]
 
 [ext_resource type="PackedScene" uid="uid://cwignklc4f46o" path="res://cells/base_cell.tscn" id="1_muk1u"]
 [ext_resource type="Script" uid="uid://0nmj58ht147k" path="res://cells/player/player.gd" id="2_yo5qs"]
+[ext_resource type="Texture2D" uid="uid://cqq2s743bprow" path="res://cells/player/player_cell.png" id="3_umwka"]
 
 [node name="Player" instance=ExtResource("1_muk1u")]
 script = ExtResource("2_yo5qs")
+preview_laser_distance = 250
 
 [node name="Icon" parent="." index="0"]
 visible = true
+modulate = Color(1, 1, 1, 1)
+texture = ExtResource("3_umwka")

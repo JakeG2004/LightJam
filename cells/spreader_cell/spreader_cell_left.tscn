@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://hvlvoqjm7o7w"]
+
+[ext_resource type="Script" uid="uid://xaklrmco6tci" path="res://cells/blocker_cell/blocker_cell.gd" id="1_vpq1s"]
+[ext_resource type="Texture2D" uid="uid://ckowspipre2g7" path="res://cells/spreader_cell/spreader_cell_left_wing.png" id="2_t76w1"]
+
+[node name="SpreaderCellLeft" type="Node2D"]
+script = ExtResource("1_vpq1s")
+
+[node name="BlockerCell" type="Sprite2D" parent="."]
+texture = ExtResource("2_t76w1")

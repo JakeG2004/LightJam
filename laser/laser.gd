@@ -11,11 +11,27 @@ const NORMAL_STRENGTH: int = 3
 const WEAK_STRENGTH: int = 2
 const STRONG_STRENGTH: int = 4
 
+var brightness := 0.0
+var time := 0.0
+var dying := false
 
 # Set the end position to be global for safety
 func _ready() -> void:
 	#set_end_pos(end_pos)
 	cast_ray_and_hit()
+
+func _process(dt: float):
+	if dying:
+		brightness -= dt / 3.0
+		if brightness <= 0:
+			queue_free()
+	else:
+		brightness += abs(sin(time))
+		if brightness >= 1.0:
+			brightness = 1.0
+			dying = true
+	
+	time += dt
 
 # Sets the end position to hit a map cell and calls the cell `laser_in` method.
 func cast_ray_and_hit():

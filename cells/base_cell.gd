@@ -3,7 +3,6 @@ class_name Cell
 extends Node2D
 
 # Define laser type
-const Laser = preload("res://laser/laser.gd")
 const LaserScene = preload("res://laser/laser.tscn")
 
 # Publicly accessible variables
@@ -15,7 +14,7 @@ func _enter_tree() -> void:
 
 func _exit_tree():
 	if Level.map:
-		Level.map.set_at(global_position, null)
+		Level.map.clear_at(global_position, self)
 		
 func on_place():
 	pass

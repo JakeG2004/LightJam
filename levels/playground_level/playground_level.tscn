@@ -12,15 +12,15 @@ position = Vector2(144, 48)
 width = 20
 height = 20
 
-[node name="Player" parent="." index="1" instance=ExtResource("2_uay8w")]
+[node name="Player" parent="Map" index="0" instance=ExtResource("2_uay8w")]
 position = Vector2(144, 144)
 preview_laser_distance = 250
 
-[node name="ColorChangerCell" parent="." index="2" instance=ExtResource("3_j0c47")]
-position = Vector2(400, 144)
-
-[node name="ShadowCell" parent="." index="3" instance=ExtResource("4_wdc5f")]
+[node name="ColorChangerCell" parent="Map" index="1" instance=ExtResource("3_j0c47")]
 position = Vector2(368, 368)
 
-[node name="ShadowCell2" parent="." index="4" instance=ExtResource("4_wdc5f")]
+[node name="ShadowCell" parent="Map" index="2" instance=ExtResource("4_wdc5f")]
+position = Vector2(432, 144)
+
+[node name="ShadowCell2" parent="Map" index="3" instance=ExtResource("4_wdc5f")]
 position = Vector2(144, 368)

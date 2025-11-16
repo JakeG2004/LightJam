@@ -16,6 +16,9 @@ func _ready():
 	for enemy: ShadowCell in enemies:
 		enemy.died.connect(on_enemy_death)
 
+func _process(_dt):
+	center_on_screen()
+
 func on_enemy_death(enemy: Node):
 	enemies.erase(enemy)
 	if(enemies.size() <= 0):
@@ -25,3 +28,10 @@ func save_as_scene(path: String):
 	var scene = PackedScene.new()
 	scene.pack(self)
 	ResourceSaver.save(scene, path)
+
+func center_on_screen():
+	var screen_size := Vector2(
+		ProjectSettings.get_setting("display/window/size/viewport_width"),
+		ProjectSettings.get_setting("display/window/size/viewport_height"),
+	)
+	global_position = (screen_size - map.render_size()) / 2.0

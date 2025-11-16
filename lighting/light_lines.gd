@@ -1,12 +1,36 @@
 extends Node2D
 
 const LINE_SIZE := 32.0
+var flashing: bool = false
+var flash_time := 0.0
+const FLASH_DURATION := .5
+const FLASH_HOLD = 0.75
+const FLASH_RADIUS = 150
 
-func _process(_dt):
+func _ready():
+	GameEvents.flash_level.connect(_on_flash_level)
+	
+func _on_flash_level():
+	flashing = true
+	flash_time = FLASH_DURATION + FLASH_HOLD
+	
+
+func _process(dt):
+	if(flashing):
+		flash_time -= dt
+		if(flash_time <= 0):
+			flashing = false
 	queue_redraw()
 
 # Draws the line of the laser
 func _draw():
+	if(flashing):
+		var vp_size = get_viewport().get_visible_rect().size
+		var center = vp_size * 0.5
+		draw_circle(center, FLASH_RADIUS, Color(1, 1, 1, (flash_time / FLASH_DURATION) * 0.25))
+		draw_circle(center, FLASH_RADIUS * .8, Color(1, 1, 1, (flash_time / FLASH_DURATION) * 0.5))
+		draw_circle(center, FLASH_RADIUS * .6, Color(1, 1, 1, flash_time / FLASH_DURATION))
+		
 	var lasers := get_tree().get_nodes_in_group("Laser")
 	
 	for laser: Laser in lasers:

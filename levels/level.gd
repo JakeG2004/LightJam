@@ -32,6 +32,8 @@ func set_children_owner(node: Node, new_owner: Node):
 	
 	# Recursively call this function for all children
 	for child in node.get_children():
+		if(child is Laser):
+			continue
 		set_children_owner(child, new_owner)
 
 func save_as_scene():

@@ -22,7 +22,7 @@ func rotate_piece():
 		return
 		
 	var child: Cell = get_child(0)
-	child.facing += (child.set_direction_in_bounds(child.facing + 2))
+	child.facing = (child.set_direction_in_bounds(child.facing + 2))
 	child.rotate(-PI / 2)
 	
 func change_piece_color():

@@ -18,7 +18,6 @@ func _input(event: InputEvent):
 		
 
 func shoot():
-	#var direction := Laser.rad_to_direction(global_position.direction_to(cursor).angle())
 	laser_out(direction, Color.WHITE, Laser.NORMAL_STRENGTH)
 	
 

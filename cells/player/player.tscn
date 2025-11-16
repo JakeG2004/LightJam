@@ -9,6 +9,6 @@ script = ExtResource("2_yo5qs")
 preview_laser_distance = 250
 
 [node name="Icon" parent="." index="0"]
-visible = true
 modulate = Color(1, 1, 1, 1)
+z_index = 0
 texture = ExtResource("3_umwka")

@@ -7,5 +7,4 @@
 script = ExtResource("1_poiik")
 
 [node name="Icon" type="Sprite2D" parent="."]
-z_index = 1
 texture = ExtResource("2_ypm0p")

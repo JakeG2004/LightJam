@@ -4,8 +4,16 @@ extends "res://cells/base_cell.gd"
 @export var right_wing: Cell
 
 func _ready() -> void:
-	left_wing = get_child(2)
-	right_wing = get_child(1)
+	# Call ready on the base class
+	super()
+	if(left_wing != null && right_wing != null):
+		return
+		
+	for child in get_children():
+		match child.name:
+			"SpreaderCellRight": right_wing = child
+			"SpreaderCellLeft": left_wing = child
+			_: continue
 	
 func _process(_delta: float) -> void:
 	if(left_wing == null || right_wing == null):
@@ -14,6 +22,15 @@ func _process(_delta: float) -> void:
 			left_wing.queue_free()
 		if(right_wing != null):
 			right_wing.queue_free()
+			
+func _exit_tree() -> void:
+	# Only run cleanup if we are actually being deleted
+	if is_queued_for_deletion():
+		if left_wing:
+			left_wing.queue_free()
+		if right_wing:
+			right_wing.queue_free()
+	
 		
 func on_place():
 		left_wing.reparent(get_parent())
@@ -44,8 +61,10 @@ func create_out_lasers(in_laser: Laser, n: int) -> void:
 	for i in range(n):
 		if(facing == 0 || facing == 4):
 			@warning_ignore("integer_division")
-			laser_out(in_laser.direction, in_laser.color, in_laser.strength, Vector2(i - (n / 2), 0))
+			var offset: Vector2 = Vector2(32 * (i - (n / 2)), 0)
+			laser_out(in_laser.direction, in_laser.color, in_laser.strength, offset)
 			
 		if(facing == 2 || facing == 6):
 			@warning_ignore("integer_division")
-			laser_out(in_laser.direction, in_laser.color, in_laser.strength, Vector2(0, i - (n / 2)))
+			var offset: Vector2 = Vector2(0, 32 * (i - (n / 2)))
+			laser_out(in_laser.direction, in_laser.color, in_laser.strength, offset)

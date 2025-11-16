@@ -10,6 +10,7 @@ script = ExtResource("1_lpwxl")
 [node name="MouseFollower" parent="." instance=ExtResource("2_4es38")]
 
 [node name="Map" parent="." instance=ExtResource("2_yj3bx")]
+position = Vector2(149, 58)
 width = 5
 height = 5
 

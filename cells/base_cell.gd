@@ -1,4 +1,4 @@
-class_name BaseCell
+class_name Cell
 
 extends Node2D
 

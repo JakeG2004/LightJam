@@ -1,6 +1,5 @@
 extends Node2D
 
-const Map := preload("res://map/map.gd")
 const BaseCellScene := preload("res://cells/base_cell.tscn")
 const ReflectorCellScene := preload("res://cells/reflector_cell/reflector_cell.tscn")
 

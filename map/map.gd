@@ -1,7 +1,6 @@
 class_name Map
 extends Node2D
 
-const Cell := preload("res://cells/base_cell.gd")
 const BaseCellScene := preload("res://cells/base_cell.tscn")
 const DEFAULT_TILE_TEXTURE := preload("res://map/default_tile.png")
 const CELL_SIZE := 32.0

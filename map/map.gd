@@ -64,7 +64,10 @@ func get_at(pos: Vector2) -> Cell:
 func set_at(pos: Vector2, cell: Cell):
 	var xy := pos_to_xy(pos)
 	if is_inbounds(xy):
-		cells[xy_to_idx(xy)] = cell
+		var idx := xy_to_idx(xy)
+		if cells[idx]:
+			cells[idx].free() # free instantly to avoid the 
+		cells[idx] = cell
 
 func set_tile(pos: Vector2, txtr: Texture):
 	var xy := pos_to_xy(pos)
@@ -78,6 +81,10 @@ func render_size() -> Vector2:
 ## Returns the position centered on grid cells.
 func fit_to_grid(pos: Vector2) -> Vector2:
 	return global_position + ((pos - global_position) / CELL_SIZE).floor() * CELL_SIZE + Vector2.ONE * CELL_SIZE / 2.0
+
+## Returns `true` if the global position is in the map bounds.
+func is_inbounds_at(pos: Vector2) -> bool:
+	return is_inbounds(pos_to_xy(pos))
 
 ## Returns the x and y index from the position.
 func pos_to_xy(pos: Vector2) -> Vector2i:

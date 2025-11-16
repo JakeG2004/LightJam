@@ -14,7 +14,7 @@ func on_place():
 		Level.map.clear_at(global_position, self)
 		
 # Add itself to the map when added to the scene
-func _enter_tree() -> void:
+func _ready() -> void:
 	if Level.map:
 		Level.map.set_at(global_position, self)
 		

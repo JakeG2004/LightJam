@@ -64,8 +64,6 @@ func get_at(pos: Vector2) -> Cell:
 func set_at(pos: Vector2, cell: Cell):
 	var xy := pos_to_xy(pos)
 	if is_inbounds(xy):
-		print("set_at called")
-		print_stack()
 		var idx := xy_to_idx(xy)
 		if cells[idx]:
 			cells[idx].queue_free() # free the cell
@@ -75,8 +73,6 @@ func clear_at(pos: Vector2, cell: Cell):
 	var xy := pos_to_xy(pos)
 	var idx := xy_to_idx(xy)
 	if is_inbounds(xy) && cells[idx] == cell:
-		print("clear_at called")
-		print_stack()
 		cells[idx].queue_free()
 		cells[idx] = null
 		#cells[idx] = BaseCellScene.instantiate()

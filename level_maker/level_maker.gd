@@ -75,7 +75,7 @@ func add_spreader_cell():
 	mouse_follower.add_child(spreader_cell)
 
 func save_level():
-	pass
+	save_as_scene()
 	
 func load_level():
 	pass

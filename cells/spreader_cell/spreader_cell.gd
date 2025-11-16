@@ -10,33 +10,30 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if(left_wing == null || right_wing == null):
 		queue_free()
+		if(left_wing != null):
+			left_wing.queue_free()
+		if(right_wing != null):
+			right_wing.queue_free()
 		
 func on_place():
 		left_wing.reparent(get_parent())
 		right_wing.reparent(get_parent())
-		
-		print(Level.map)
 			
-		"""match facing:
+		match facing:
 			0: # input facing down
-				Level.map.set_at(global_position - Vector2(1, 0), left_wing)
-				Level.map.set_at(global_position + Vector2(1, 0), right_wing)
+				Level.map.set_at(Level.map.xy_to_pos(Level.map.pos_to_xy(global_position) - Vector2i(1, 0)), left_wing)
+				Level.map.set_at(Level.map.xy_to_pos(Level.map.pos_to_xy(global_position) + Vector2i(1, 0)), right_wing)
 			2: # input facing right
-				Level.map.set_at(global_position - Vector2(0, 1), left_wing)
-				Level.map.set_at(global_position + Vector2(0, 1), right_wing)
+				Level.map.set_at(Level.map.xy_to_pos(Level.map.pos_to_xy(global_position) - Vector2i(0, 1)), left_wing)
+				Level.map.set_at(Level.map.xy_to_pos(Level.map.pos_to_xy(global_position) + Vector2i(0, 1)), right_wing)
 			4: # input facing up
-				Level.map.set_at(global_position + Vector2(1, 0), left_wing)
-				Level.map.set_at(global_position - Vector2(1, 0), right_wing)
+				Level.map.set_at(Level.map.xy_to_pos(Level.map.pos_to_xy(global_position) + Vector2i(1, 0)), left_wing)
+				Level.map.set_at(Level.map.xy_to_pos(Level.map.pos_to_xy(global_position) - Vector2i(1, 0)), right_wing)
 			6: # input facing left
-				Level.map.set_at(global_position + Vector2(0, 1), left_wing)
-				Level.map.set_at(global_position - Vector2(0, 1), right_wing)
+				Level.map.set_at(Level.map.xy_to_pos(Level.map.pos_to_xy(global_position) + Vector2i(0, 1)), left_wing)
+				Level.map.set_at(Level.map.xy_to_pos(Level.map.pos_to_xy(global_position) - Vector2i(0, 1)), right_wing)
 			_: # other
-				pass"""
-		
-
-func _exit_tree():
-	if Level.map:
-		Level.map.set_at(global_position, null)
+				pass
 
 # Get input laser. Default case is to pass it through
 func laser_in(in_laser: Laser) -> void:

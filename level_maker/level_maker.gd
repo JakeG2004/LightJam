@@ -1,4 +1,4 @@
-extends Node2D
+extends "res://levels/level.gd"
 
 const BaseCellScene := preload("res://cells/base_cell.tscn")
 const ReflectorCellScene := preload("res://cells/reflector_cell/reflector_cell.tscn")
@@ -10,11 +10,9 @@ const FocuserCellScene := preload("res://cells/focuser_cell/focuser.tscn")
 const ShadowCellScene := preload("res://cells/shadow_cell/shadow_cell.tscn")
 const SpreaderCellScene := preload("res://cells/spreader_cell/spreader_cell.tscn")
 
-var map: Map
 var mouse_follower: MouseFollower
 
 func _ready():
-	map = $Map
 	mouse_follower = $MouseFollower
 	
 func set_dimension(dim_string: String):

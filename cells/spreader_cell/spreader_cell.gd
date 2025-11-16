@@ -14,12 +14,10 @@ func _process(_delta: float) -> void:
 func on_place():
 		left_wing.reparent(get_parent())
 		right_wing.reparent(get_parent())
-
-func _enter_tree() -> void:
-	if Level.map:
-		Level.map.set_at(global_position, self)
 		
-		match facing:
+		print(Level.map)
+			
+		"""match facing:
 			0: # input facing down
 				Level.map.set_at(global_position - Vector2(1, 0), left_wing)
 				Level.map.set_at(global_position + Vector2(1, 0), right_wing)
@@ -33,7 +31,7 @@ func _enter_tree() -> void:
 				Level.map.set_at(global_position + Vector2(0, 1), left_wing)
 				Level.map.set_at(global_position - Vector2(0, 1), right_wing)
 			_: # other
-				pass
+				pass"""
 		
 
 func _exit_tree():

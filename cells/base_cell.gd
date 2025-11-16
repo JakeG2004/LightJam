@@ -8,16 +8,20 @@ const LaserScene := preload("res://laser/laser.tscn")
 # Publicly accessible variables
 @export var facing: int = 0
 
+# For the base node, delete whatever is in its spot
+func on_place():
+	if get_script() == Cell:
+		Level.map.clear_at(global_position, self)
+		
+# Add itself to the map when added to the scene
 func _enter_tree() -> void:
 	if Level.map:
 		Level.map.set_at(global_position, self)
-
-func _exit_tree():
+		
+# Use this function instead of _exit_tree to prevent it from triggering on scene scope changes
+func _is_queued_for_deletion():
 	if Level.map:
 		Level.map.clear_at(global_position, self)
-		
-func on_place():
-	pass
 
 # Get input laser. Default case is to pass it through
 func laser_in(in_laser: Laser) -> void:

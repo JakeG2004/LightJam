@@ -39,15 +39,16 @@ func clear_array():
 
 # Sets every cell to be the base cell by default
 func initialize_array():
-	for y in range(height):
+	"""for y in range(height):
 		for x in range(width):
 			var cell: Cell = load("res://cells/base_cell.tscn").instantiate()
-			add_child(cell)
-
+			
 			var xy := Vector2i(x, y)
 			cell.position = Vector2(xy) * CELL_SIZE + Vector2.ONE * CELL_SIZE / 2.0
+			
+			add_child(cell)
 
-			cells[xy_to_idx(xy)] = cell
+			cells[xy_to_idx(xy)] = cell"""
 	
 	tiles.fill(DEFAULT_TILE_TEXTURE)
 	queue_redraw()
@@ -63,15 +64,20 @@ func get_at(pos: Vector2) -> Cell:
 func set_at(pos: Vector2, cell: Cell):
 	var xy := pos_to_xy(pos)
 	if is_inbounds(xy):
+		print("set_at called")
+		print_stack()
 		var idx := xy_to_idx(xy)
 		if cells[idx]:
-			cells[idx].queue_free() # free instantly to avoid the 
+			cells[idx].queue_free() # free the cell
 		cells[idx] = cell
 
 func clear_at(pos: Vector2, cell: Cell):
 	var xy := pos_to_xy(pos)
 	var idx := xy_to_idx(xy)
 	if is_inbounds(xy) && cells[idx] == cell:
+		print("clear_at called")
+		print_stack()
+		cells[idx].queue_free()
 		cells[idx] = null
 		#cells[idx] = BaseCellScene.instantiate()
 		#cells[idx].position = Vector2(xy) * CELL_SIZE + Vector2.ONE * CELL_SIZE / 2.0

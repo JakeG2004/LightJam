@@ -79,3 +79,6 @@ func save_level():
 	
 func load_level():
 	pass
+	
+func apply_screen_fit():
+	pass

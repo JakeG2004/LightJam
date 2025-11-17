@@ -20,8 +20,17 @@ func _process(_delta: float) -> void:
 	pass
 	
 func game_over():
+	if(dead):
+		return
 	dead = true
+	SoundManager.instance.play_clip("lose")
 	await get_tree().create_timer(5).timeout
+	GameManager.instance.set_high_score(cur_lvl_idx)
+	GameManager.instance.load_scene("main menu")
+	
+func win_game():
+	SoundManager.instance.play_clip("game_won")
+	await get_tree().create_timer(1).timeout
 	GameManager.instance.set_high_score(cur_lvl_idx)
 	GameManager.instance.load_scene("main menu")
 	
@@ -41,8 +50,8 @@ func load_next_level():
 	
 	# Out of levels
 	if(next_level == null):
-		print("Out of levels")
-		GameManager.instance.set_high_score(cur_lvl_idx)
+		dead = true
+		win_game()
 		return
 		
 	# Load the next level
@@ -50,11 +59,14 @@ func load_next_level():
 	Level.instance.map = new_level
 	Level.instance.add_child(new_level)
 	Level.instance.add_gems()
+	Level.instance.level_finished = false
 	
 	# Trigger the level flash at the start
 	GameEvents.flash_level.emit()
+	SoundManager.instance.play_clip("win")
 	
 	cur_lvl_idx += 1
+	GameBG.instance.new_level(cur_lvl_idx, Level.instance.map.num_lasers, Level.instance.map.time, Level.instance.map.hint)
 
 func get_next_level() -> PackedScene:
 	# Specify the levels folder
@@ -70,9 +82,10 @@ func get_next_level() -> PackedScene:
 	var path = dir_path + expected_name
 	
 	# Check that that level exists
-	if(!dir.file_exists(expected_name)):
+	if !ResourceLoader.exists(path):
 		push_error("Level does not exist at: %s" % path)
 		return null
+
 		
 	# Load dynamically
 	var scene := load(path)

@@ -32,6 +32,10 @@ window/stretch/mode="canvas_items"
 Laser=""
 Enemies=""
 
+[gui]
+
+theme/custom_font="uid://1k3qmxvk1upx"
+
 [input]
 
 shoot={

@@ -1,0 +1,243 @@
+[gd_scene load_steps=12 format=3 uid="uid://ds4vhld5vn6rr"]
+
+[ext_resource type="Script" uid="uid://dn15nqcmgtl5e" path="res://map/map.gd" id="1_ti5b6"]
+[ext_resource type="PackedScene" uid="uid://cofps6xaq0fj" path="res://cells/player/player.tscn" id="2_l7rxp"]
+[ext_resource type="Texture2D" uid="uid://cqq2s743bprow" path="res://cells/player/player_cell.png" id="4_a7lgp"]
+[ext_resource type="PackedScene" uid="uid://cvse80ar1ae2" path="res://cells/color_changer_cell/color_changer_cell.tscn" id="5_ompkf"]
+[ext_resource type="Texture2D" uid="uid://d8ha8lse3qqr" path="res://cells/color_changer_cell/color_changer_background.png" id="7_aa5le"]
+[ext_resource type="Texture2D" uid="uid://dhyi4i6ox7cu" path="res://cells/color_changer_cell/color_changer_glass.png" id="8_80epw"]
+[ext_resource type="PackedScene" uid="uid://s63plgwf5nnq" path="res://cells/reflector_cell/reflector_cell.tscn" id="9_1ujwg"]
+[ext_resource type="Texture2D" uid="uid://dlp70ajmmls06" path="res://cells/base_cell.png" id="11_tjpin"]
+[ext_resource type="Texture2D" uid="uid://cs3gogmq4bt6c" path="res://cells/reflector_cell/reflector_mirror.png" id="12_mrwl8"]
+[ext_resource type="PackedScene" uid="uid://jxepbfhdx51v" path="res://cells/shadow_cell/shadow_cell.tscn" id="13_il6tp"]
+[ext_resource type="Texture2D" uid="uid://bggvji75mgaju" path="res://cells/shadow_cell/shadow_cell_normal.png" id="15_cxq18"]
+
+[node name="Map" type="Node2D"]
+z_index = -1
+script = ExtResource("1_ti5b6")
+width = 11
+height = 11
+hint = "I like 4:30 PM"
+
+[node name="Player" parent="." instance=ExtResource("2_l7rxp")]
+position = Vector2(176, 176)
+
+[node name="Icon2" type="Sprite2D" parent="Player"]
+texture = ExtResource("4_a7lgp")
+offset = Vector2(0.1, 0.1)
+
+[node name="ColorChangerCell" parent="." instance=ExtResource("5_ompkf")]
+position = Vector2(176, 112)
+cell_color = 1
+
+[node name="ColorChangerBackground2" type="Sprite2D" parent="ColorChangerCell"]
+texture = ExtResource("7_aa5le")
+
+[node name="Icon2" type="Sprite2D" parent="ColorChangerCell"]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("8_80epw")
+
+[node name="ReflectorCell" parent="." instance=ExtResource("9_1ujwg")]
+position = Vector2(176, 16)
+facing = 6
+
+[node name="Icon2" type="Sprite2D" parent="ReflectorCell"]
+texture = ExtResource("11_tjpin")
+
+[node name="ReflectorMirror2" type="Sprite2D" parent="ReflectorCell"]
+rotation = -7.068583
+texture = ExtResource("12_mrwl8")
+
+[node name="@Node2D@7" parent="." instance=ExtResource("9_1ujwg")]
+position = Vector2(16, 16)
+
+[node name="Icon2" type="Sprite2D" parent="@Node2D@7"]
+texture = ExtResource("11_tjpin")
+
+[node name="ReflectorMirror2" type="Sprite2D" parent="@Node2D@7"]
+rotation = -2.3561945
+texture = ExtResource("12_mrwl8")
+
+[node name="@Node2D@9" parent="." instance=ExtResource("9_1ujwg")]
+position = Vector2(16, 80)
+facing = 2
+
+[node name="Icon2" type="Sprite2D" parent="@Node2D@9"]
+texture = ExtResource("11_tjpin")
+
+[node name="ReflectorMirror2" type="Sprite2D" parent="@Node2D@9"]
+rotation = -3.926991
+texture = ExtResource("12_mrwl8")
+
+[node name="@Node2D@11" parent="." instance=ExtResource("9_1ujwg")]
+position = Vector2(336, 80)
+facing = 4
+
+[node name="Icon2" type="Sprite2D" parent="@Node2D@11"]
+texture = ExtResource("11_tjpin")
+
+[node name="ReflectorMirror2" type="Sprite2D" parent="@Node2D@11"]
+rotation = -5.497787
+texture = ExtResource("12_mrwl8")
+
+[node name="@Node2D@13" parent="." instance=ExtResource("9_1ujwg")]
+position = Vector2(336, 16)
+facing = 6
+
+[node name="Icon2" type="Sprite2D" parent="@Node2D@13"]
+texture = ExtResource("11_tjpin")
+
+[node name="ReflectorMirror2" type="Sprite2D" parent="@Node2D@13"]
+rotation = -7.068583
+texture = ExtResource("12_mrwl8")
+
+[node name="@Node2D@46" parent="." instance=ExtResource("9_1ujwg")]
+position = Vector2(304, 16)
+
+[node name="Icon2" type="Sprite2D" parent="@Node2D@46"]
+texture = ExtResource("11_tjpin")
+
+[node name="ReflectorMirror2" type="Sprite2D" parent="@Node2D@46"]
+rotation = -2.3561945
+texture = ExtResource("12_mrwl8")
+
+[node name="@Node2D@48" parent="." instance=ExtResource("9_1ujwg")]
+position = Vector2(304, 176)
+facing = 4
+
+[node name="Icon2" type="Sprite2D" parent="@Node2D@48"]
+texture = ExtResource("11_tjpin")
+
+[node name="ReflectorMirror2" type="Sprite2D" parent="@Node2D@48"]
+rotation = -5.497787
+texture = ExtResource("12_mrwl8")
+
+[node name="@Node2D@74" parent="." instance=ExtResource("9_1ujwg")]
+position = Vector2(80, 272)
+
+[node name="Icon2" type="Sprite2D" parent="@Node2D@74"]
+texture = ExtResource("11_tjpin")
+
+[node name="ReflectorMirror2" type="Sprite2D" parent="@Node2D@74"]
+rotation = -2.3561945
+texture = ExtResource("12_mrwl8")
+
+[node name="@Node2D@80" parent="." instance=ExtResource("9_1ujwg")]
+position = Vector2(112, 272)
+facing = 4
+
+[node name="Icon2" type="Sprite2D" parent="@Node2D@80"]
+texture = ExtResource("11_tjpin")
+
+[node name="ReflectorMirror2" type="Sprite2D" parent="@Node2D@80"]
+rotation = -5.497787
+texture = ExtResource("12_mrwl8")
+
+[node name="@Node2D@88" parent="." instance=ExtResource("9_1ujwg")]
+position = Vector2(112, 240)
+
+[node name="Icon2" type="Sprite2D" parent="@Node2D@88"]
+texture = ExtResource("11_tjpin")
+
+[node name="ReflectorMirror2" type="Sprite2D" parent="@Node2D@88"]
+rotation = -2.3561945
+texture = ExtResource("12_mrwl8")
+
+[node name="@Node2D@96" parent="." instance=ExtResource("9_1ujwg")]
+position = Vector2(144, 240)
+facing = 4
+
+[node name="Icon2" type="Sprite2D" parent="@Node2D@96"]
+texture = ExtResource("11_tjpin")
+
+[node name="ReflectorMirror2" type="Sprite2D" parent="@Node2D@96"]
+rotation = -5.497787
+texture = ExtResource("12_mrwl8")
+
+[node name="@Node2D@107" parent="." instance=ExtResource("9_1ujwg")]
+position = Vector2(144, 112)
+
+[node name="Icon2" type="Sprite2D" parent="@Node2D@107"]
+texture = ExtResource("11_tjpin")
+
+[node name="ReflectorMirror2" type="Sprite2D" parent="@Node2D@107"]
+rotation = -2.3561945
+texture = ExtResource("12_mrwl8")
+
+[node name="@Node2D@153" parent="." instance=ExtResource("9_1ujwg")]
+position = Vector2(304, 304)
+facing = 3
+
+[node name="Icon2" type="Sprite2D" parent="@Node2D@153"]
+texture = ExtResource("11_tjpin")
+
+[node name="ReflectorMirror2" type="Sprite2D" parent="@Node2D@153"]
+rotation = -4.712389
+texture = ExtResource("12_mrwl8")
+
+[node name="@Node2D@179" parent="." instance=ExtResource("9_1ujwg")]
+position = Vector2(336, 272)
+facing = 5
+
+[node name="Icon2" type="Sprite2D" parent="@Node2D@179"]
+texture = ExtResource("11_tjpin")
+
+[node name="ReflectorMirror2" type="Sprite2D" parent="@Node2D@179"]
+rotation = -6.283185
+texture = ExtResource("12_mrwl8")
+
+[node name="@Node2D@214" parent="." instance=ExtResource("9_1ujwg")]
+position = Vector2(112, 48)
+facing = 7
+
+[node name="Icon2" type="Sprite2D" parent="@Node2D@214"]
+texture = ExtResource("11_tjpin")
+
+[node name="ReflectorMirror2" type="Sprite2D" parent="@Node2D@214"]
+rotation = -7.853981
+texture = ExtResource("12_mrwl8")
+
+[node name="@Node2D@265" parent="." instance=ExtResource("9_1ujwg")]
+position = Vector2(176, 304)
+facing = 4
+
+[node name="Icon2" type="Sprite2D" parent="@Node2D@265"]
+texture = ExtResource("11_tjpin")
+
+[node name="ReflectorMirror2" type="Sprite2D" parent="@Node2D@265"]
+rotation = -11.780973
+texture = ExtResource("12_mrwl8")
+
+[node name="@Node2D@276" parent="." instance=ExtResource("9_1ujwg")]
+position = Vector2(80, 304)
+facing = 2
+
+[node name="Icon2" type="Sprite2D" parent="@Node2D@276"]
+texture = ExtResource("11_tjpin")
+
+[node name="ReflectorMirror2" type="Sprite2D" parent="@Node2D@276"]
+rotation = -3.926991
+texture = ExtResource("12_mrwl8")
+
+[node name="@Node2D@283" parent="." instance=ExtResource("9_1ujwg")]
+position = Vector2(48, 176)
+facing = 2
+
+[node name="Icon2" type="Sprite2D" parent="@Node2D@283"]
+texture = ExtResource("11_tjpin")
+
+[node name="ReflectorMirror2" type="Sprite2D" parent="@Node2D@283"]
+rotation = -3.926991
+texture = ExtResource("12_mrwl8")
+
+[node name="ShadowCell" parent="." instance=ExtResource("13_il6tp")]
+position = Vector2(48, 112)
+cell_color = 1
+
+[node name="Icon2" type="Sprite2D" parent="ShadowCell"]
+texture = ExtResource("11_tjpin")
+offset = Vector2(0.1, 0.1)
+
+[node name="ShadowCellNormal2" type="Sprite2D" parent="ShadowCell"]
+modulate = Color(1, 0, 0, 0.5)
+texture = ExtResource("15_cxq18")

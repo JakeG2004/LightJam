@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://b7uy7jppfaxku"]
+
+[ext_resource type="Script" uid="uid://dn15nqcmgtl5e" path="res://map/map.gd" id="1_q3dmb"]
+[ext_resource type="PackedScene" uid="uid://cofps6xaq0fj" path="res://cells/player/player.tscn" id="2_mu1wo"]
+[ext_resource type="Texture2D" uid="uid://cqq2s743bprow" path="res://cells/player/player_cell.png" id="4_hr6ki"]
+[ext_resource type="PackedScene" uid="uid://jxepbfhdx51v" path="res://cells/shadow_cell/shadow_cell.tscn" id="5_s4hpo"]
+[ext_resource type="Texture2D" uid="uid://dlp70ajmmls06" path="res://cells/base_cell.png" id="7_l4sxv"]
+[ext_resource type="Texture2D" uid="uid://bggvji75mgaju" path="res://cells/shadow_cell/shadow_cell_normal.png" id="8_3b5qk"]
+
+[node name="Map" type="Node2D"]
+z_index = -1
+script = ExtResource("1_q3dmb")
+width = 7
+height = 7
+hint = "Two of them? This is getting out of hand"
+
+[node name="Player" parent="." instance=ExtResource("2_mu1wo")]
+position = Vector2(48, 48)
+
+[node name="Icon2" type="Sprite2D" parent="Player"]
+texture = ExtResource("4_hr6ki")
+offset = Vector2(0.1, 0.1)
+
+[node name="@Node2D@3" parent="." instance=ExtResource("2_mu1wo")]
+position = Vector2(48, 176)
+
+[node name="Icon2" type="Sprite2D" parent="@Node2D@3"]
+texture = ExtResource("4_hr6ki")
+offset = Vector2(0.1, 0.1)
+
+[node name="ShadowCell" parent="." instance=ExtResource("5_s4hpo")]
+position = Vector2(176, 48)
+
+[node name="Icon2" type="Sprite2D" parent="ShadowCell"]
+texture = ExtResource("7_l4sxv")
+offset = Vector2(0.1, 0.1)
+
+[node name="ShadowCellNormal2" type="Sprite2D" parent="ShadowCell"]
+texture = ExtResource("8_3b5qk")
+
+[node name="@Node2D@13" parent="." instance=ExtResource("5_s4hpo")]
+position = Vector2(176, 176)
+
+[node name="Icon2" type="Sprite2D" parent="@Node2D@13"]
+texture = ExtResource("7_l4sxv")
+offset = Vector2(0.1, 0.1)
+
+[node name="ShadowCellNormal2" type="Sprite2D" parent="@Node2D@13"]
+modulate = Color(1, 1, 1, 0.5)
+texture = ExtResource("8_3b5qk")

@@ -11,6 +11,10 @@ const CELL_SIZE := 32.0
 var cells: Array[Cell] = []
 var tiles: Array[Texture] = []
 
+@export var hint: String = "This is a hint"
+@export var time: float = 5
+@export var num_lasers: int = 5
+
 func _enter_tree():
 	cells.resize(width * height)
 	tiles.resize(width * height)

@@ -1,0 +1,125 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwphos3q3uwop"]
+
+[ext_resource type="Script" uid="uid://bp1gtv3qlisxx" path="res://level_maker/level_maker_ingame.gd" id="1_g8ooo"]
+[ext_resource type="PackedScene" uid="uid://crbe6ojl02g0c" path="res://tools/mouse_follower/mouse_follower.tscn" id="2_gqpyw"]
+[ext_resource type="PackedScene" uid="uid://xughvb88hd2v" path="res://map/map.tscn" id="3_4pu7a"]
+[ext_resource type="PackedScene" uid="uid://cusssfm3qfbco" path="res://lighting/lighting.tscn" id="4_78881"]
+
+[node name="LevelMaker" type="Node2D"]
+script = ExtResource("1_g8ooo")
+
+[node name="MouseFollower" parent="." instance=ExtResource("2_gqpyw")]
+
+[node name="Map" parent="." instance=ExtResource("3_4pu7a")]
+width = 7
+height = 7
+
+[node name="UI" type="Node" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="UI"]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/CanvasLayer"]
+offset_right = 153.0
+offset_bottom = 434.0
+theme_override_constants/separation = 10
+
+[node name="Dimension" type="LineEdit" parent="UI/CanvasLayer/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Dimension"
+
+[node name="Erase" type="Button" parent="UI/CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "Erase Cell"
+
+[node name="PlayerCell" type="Button" parent="UI/CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "Player Cell
+"
+
+[node name="GemCell" type="Button" parent="UI/CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "Gem Cell"
+
+[node name="ReflectorCell" type="Button" parent="UI/CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "Reflector Cell"
+
+[node name="BlockerCell" type="Button" parent="UI/CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "Blocker Cell
+"
+
+[node name="ColorChangerCell" type="Button" parent="UI/CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "Color Changer Cell"
+autowrap_mode = 2
+
+[node name="DefocuserCell" type="Button" parent="UI/CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "Defocuser Cell"
+autowrap_mode = 2
+
+[node name="FocuserCell" type="Button" parent="UI/CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "Focuser Cell"
+autowrap_mode = 2
+
+[node name="SpreaderCell" type="Button" parent="UI/CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "Spreader Cell"
+autowrap_mode = 2
+
+[node name="Save" type="Button" parent="UI/CanvasLayer"]
+offset_left = 176.0
+offset_top = -1.0
+offset_right = 229.0
+offset_bottom = 30.0
+text = "Save
+"
+
+[node name="Load" type="Button" parent="UI/CanvasLayer"]
+offset_left = 260.0
+offset_top = 2.0
+offset_right = 315.0
+offset_bottom = 32.0
+text = "Load
+"
+
+[node name="Controls" type="RichTextLabel" parent="UI/CanvasLayer"]
+custom_minimum_size = Vector2(0, 63.015)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 468.0
+offset_top = -146.0
+offset_right = 962.0
+offset_bottom = -3.1400146
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/normal_font_size = 26
+bbcode_enabled = true
+text = "[center]ESC - Return to
+main menu
+C - Change color of blocks
+S - Change strength of blocks
+"
+
+[node name="Lighting" parent="." instance=ExtResource("4_78881")]
+visible = false
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(198, 144)
+
+[connection signal="text_submitted" from="UI/CanvasLayer/VBoxContainer/Dimension" to="." method="set_dimension"]
+[connection signal="pressed" from="UI/CanvasLayer/VBoxContainer/Erase" to="." method="add_base_cell"]
+[connection signal="pressed" from="UI/CanvasLayer/VBoxContainer/PlayerCell" to="." method="add_player_cell"]
+[connection signal="pressed" from="UI/CanvasLayer/VBoxContainer/GemCell" to="." method="add_shadow_cell"]
+[connection signal="pressed" from="UI/CanvasLayer/VBoxContainer/ReflectorCell" to="." method="add_reflector_cell"]
+[connection signal="pressed" from="UI/CanvasLayer/VBoxContainer/BlockerCell" to="." method="add_blocker_cell"]
+[connection signal="pressed" from="UI/CanvasLayer/VBoxContainer/ColorChangerCell" to="." method="add_color_changer_cell"]
+[connection signal="pressed" from="UI/CanvasLayer/VBoxContainer/DefocuserCell" to="." method="add_defocuser_cell"]
+[connection signal="pressed" from="UI/CanvasLayer/VBoxContainer/FocuserCell" to="." method="add_focuser_cell"]
+[connection signal="pressed" from="UI/CanvasLayer/VBoxContainer/SpreaderCell" to="." method="add_spreader_cell"]
+[connection signal="pressed" from="UI/CanvasLayer/Save" to="." method="save_level"]
+[connection signal="pressed" from="UI/CanvasLayer/Load" to="." method="back_to_custom"]

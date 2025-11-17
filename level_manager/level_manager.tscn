@@ -1,9 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://tjst3dcjr88p"]
+[gd_scene load_steps=4 format=3 uid="uid://tjst3dcjr88p"]
 
 [ext_resource type="Script" uid="uid://bgxjlxyumrb0u" path="res://level_manager/level_manager.gd" id="1_hpfqu"]
 [ext_resource type="PackedScene" uid="uid://cisih7ral0pu4" path="res://levels/level.tscn" id="2_2btqq"]
+[ext_resource type="PackedScene" uid="uid://bqesxxoqsvypj" path="res://scenes/UI/game_bg.tscn" id="3_bquml"]
 
 [node name="LevelManager" type="Node2D"]
 script = ExtResource("1_hpfqu")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Control" parent="CanvasLayer" instance=ExtResource("3_bquml")]
 
 [node name="Level" parent="." instance=ExtResource("2_2btqq")]

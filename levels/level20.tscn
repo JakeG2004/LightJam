@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://cqastm12764o5"]
+
+[ext_resource type="Script" uid="uid://dn15nqcmgtl5e" path="res://map/map.gd" id="1_qc6k0"]
+[ext_resource type="PackedScene" uid="uid://cofps6xaq0fj" path="res://cells/player/player.tscn" id="2_4f5gp"]
+[ext_resource type="Texture2D" uid="uid://cqq2s743bprow" path="res://cells/player/player_cell.png" id="4_gn6m0"]
+[ext_resource type="PackedScene" uid="uid://jxepbfhdx51v" path="res://cells/shadow_cell/shadow_cell.tscn" id="5_obiwl"]
+[ext_resource type="Texture2D" uid="uid://dlp70ajmmls06" path="res://cells/base_cell.png" id="7_oxc06"]
+[ext_resource type="Texture2D" uid="uid://bggvji75mgaju" path="res://cells/shadow_cell/shadow_cell_normal.png" id="8_m00nm"]
+
+[node name="Map" type="Node2D"]
+z_index = -1
+script = ExtResource("1_qc6k0")
+width = 3
+height = 3
+hint = "This feels familiar"
+
+[node name="Player" parent="." instance=ExtResource("2_4f5gp")]
+position = Vector2(16, 48)
+
+[node name="Icon2" type="Sprite2D" parent="Player"]
+texture = ExtResource("4_gn6m0")
+offset = Vector2(0.1, 0.1)
+
+[node name="ShadowCell" parent="." instance=ExtResource("5_obiwl")]
+position = Vector2(80, 48)
+
+[node name="Icon2" type="Sprite2D" parent="ShadowCell"]
+texture = ExtResource("7_oxc06")
+offset = Vector2(0.1, 0.1)
+
+[node name="ShadowCellNormal2" type="Sprite2D" parent="ShadowCell"]
+modulate = Color(1, 1, 1, 0.5)
+texture = ExtResource("8_m00nm")

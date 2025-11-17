@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=3 uid="uid://dn8ht54hie6ud"]
+
+[ext_resource type="Script" uid="uid://dn15nqcmgtl5e" path="res://map/map.gd" id="1_8j6ib"]
+[ext_resource type="PackedScene" uid="uid://cofps6xaq0fj" path="res://cells/player/player.tscn" id="2_vivjh"]
+[ext_resource type="Texture2D" uid="uid://cqq2s743bprow" path="res://cells/player/player_cell.png" id="4_6bbsa"]
+[ext_resource type="PackedScene" uid="uid://jxepbfhdx51v" path="res://cells/shadow_cell/shadow_cell.tscn" id="5_h6fct"]
+[ext_resource type="Texture2D" uid="uid://dlp70ajmmls06" path="res://cells/base_cell.png" id="7_68478"]
+[ext_resource type="Texture2D" uid="uid://bggvji75mgaju" path="res://cells/shadow_cell/shadow_cell_normal.png" id="8_2fnm5"]
+[ext_resource type="PackedScene" uid="uid://s63plgwf5nnq" path="res://cells/reflector_cell/reflector_cell.tscn" id="9_ei44u"]
+[ext_resource type="Texture2D" uid="uid://cs3gogmq4bt6c" path="res://cells/reflector_cell/reflector_mirror.png" id="11_i1syi"]
+
+[node name="Map" type="Node2D"]
+z_index = -1
+script = ExtResource("1_8j6ib")
+width = 7
+height = 7
+hint = "Too many cooks... or something"
+
+[node name="Player" parent="." instance=ExtResource("2_vivjh")]
+position = Vector2(112, 48)
+
+[node name="Icon2" type="Sprite2D" parent="Player"]
+texture = ExtResource("4_6bbsa")
+offset = Vector2(0.1, 0.1)
+
+[node name="@Node2D@8" parent="." instance=ExtResource("2_vivjh")]
+position = Vector2(112, 176)
+
+[node name="Icon2" type="Sprite2D" parent="@Node2D@8"]
+texture = ExtResource("4_6bbsa")
+offset = Vector2(0.1, 0.1)
+
+[node name="ShadowCell" parent="." instance=ExtResource("5_h6fct")]
+position = Vector2(112, 112)
+
+[node name="Icon2" type="Sprite2D" parent="ShadowCell"]
+texture = ExtResource("7_68478")
+offset = Vector2(0.1, 0.1)
+
+[node name="ShadowCellNormal2" type="Sprite2D" parent="ShadowCell"]
+texture = ExtResource("8_2fnm5")
+
+[node name="ReflectorCell" parent="." instance=ExtResource("9_ei44u")]
+position = Vector2(144, 208)
+facing = 3
+
+[node name="Icon2" type="Sprite2D" parent="ReflectorCell"]
+texture = ExtResource("7_68478")
+
+[node name="ReflectorMirror2" type="Sprite2D" parent="ReflectorCell"]
+rotation = -10.995575
+texture = ExtResource("11_i1syi")
+
+[node name="@Node2D@40" parent="." instance=ExtResource("9_ei44u")]
+position = Vector2(176, 176)
+facing = 5
+
+[node name="Icon2" type="Sprite2D" parent="@Node2D@40"]
+texture = ExtResource("7_68478")
+
+[node name="ReflectorMirror2" type="Sprite2D" parent="@Node2D@40"]
+rotation = -6.283185
+texture = ExtResource("11_i1syi")
+
+[node name="@Node2D@131" parent="." instance=ExtResource("2_vivjh")]
+position = Vector2(16, 112)
+
+[node name="Icon2" type="Sprite2D" parent="@Node2D@131"]
+texture = ExtResource("4_6bbsa")
+offset = Vector2(0.1, 0.1)
+
+[node name="@Node2D@141" parent="." instance=ExtResource("2_vivjh")]
+position = Vector2(208, 112)
+
+[node name="Icon2" type="Sprite2D" parent="@Node2D@141"]
+texture = ExtResource("4_6bbsa")
+offset = Vector2(0.1, 0.1)

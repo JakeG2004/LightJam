@@ -28,6 +28,12 @@ func _ready() -> void:
 	add_to_group("Enemies")
 	if(Level.instance):
 		Level.instance.gems.append(self)
+		
+	for x in range(get_child_count()):
+		if(x <= 1):
+			continue
+		get_child(x).queue_free()
+		
 
 func change_strength():
 	strength = strength + 1

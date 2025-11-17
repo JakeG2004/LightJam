@@ -1,0 +1,280 @@
+[gd_scene load_steps=16 format=3 uid="uid://b50xtqr43mu86"]
+
+[ext_resource type="Script" uid="uid://dn15nqcmgtl5e" path="res://map/map.gd" id="1_xkkbv"]
+[ext_resource type="PackedScene" uid="uid://s63plgwf5nnq" path="res://cells/reflector_cell/reflector_cell.tscn" id="2_kox28"]
+[ext_resource type="Texture2D" uid="uid://dlp70ajmmls06" path="res://cells/base_cell.png" id="4_608op"]
+[ext_resource type="Texture2D" uid="uid://cs3gogmq4bt6c" path="res://cells/reflector_cell/reflector_mirror.png" id="5_2m2mc"]
+[ext_resource type="PackedScene" uid="uid://cvse80ar1ae2" path="res://cells/color_changer_cell/color_changer_cell.tscn" id="6_sxh1n"]
+[ext_resource type="Texture2D" uid="uid://d8ha8lse3qqr" path="res://cells/color_changer_cell/color_changer_background.png" id="8_8jhnv"]
+[ext_resource type="Texture2D" uid="uid://dhyi4i6ox7cu" path="res://cells/color_changer_cell/color_changer_glass.png" id="9_5c2p6"]
+[ext_resource type="PackedScene" uid="uid://jxepbfhdx51v" path="res://cells/shadow_cell/shadow_cell.tscn" id="10_66xhf"]
+[ext_resource type="Texture2D" uid="uid://bggvji75mgaju" path="res://cells/shadow_cell/shadow_cell_normal.png" id="12_1vgot"]
+[ext_resource type="PackedScene" uid="uid://dah10nj20dgp4" path="res://cells/defocuser_cell/defocuser_cell.tscn" id="13_4661h"]
+[ext_resource type="Texture2D" uid="uid://bqlxkninclxdg" path="res://cells/defocuser_cell/defocuser_cell.png" id="15_wdqfi"]
+[ext_resource type="PackedScene" uid="uid://c5m06cn7wysve" path="res://cells/focuser_cell/focuser.tscn" id="16_cxu7b"]
+[ext_resource type="Texture2D" uid="uid://dr6smyxw2t8fd" path="res://cells/focuser_cell/focuser_cell.png" id="18_gerog"]
+[ext_resource type="PackedScene" uid="uid://cofps6xaq0fj" path="res://cells/player/player.tscn" id="19_l3ntf"]
+[ext_resource type="Texture2D" uid="uid://cqq2s743bprow" path="res://cells/player/player_cell.png" id="21_56sb3"]
+
+[node name="Map" type="Node2D"]
+z_index = -1
+script = ExtResource("1_xkkbv")
+width = 9
+height = 9
+hint = "Another easy one couldn't hurt!"
+
+[node name="ReflectorCell" parent="." instance=ExtResource("2_kox28")]
+position = Vector2(144, 112)
+
+[node name="Icon2" type="Sprite2D" parent="ReflectorCell"]
+texture = ExtResource("4_608op")
+
+[node name="ReflectorMirror2" type="Sprite2D" parent="ReflectorCell"]
+rotation = -2.3561945
+texture = ExtResource("5_2m2mc")
+
+[node name="@Node2D@2" parent="." instance=ExtResource("2_kox28")]
+position = Vector2(176, 112)
+facing = 6
+
+[node name="Icon2" type="Sprite2D" parent="@Node2D@2"]
+texture = ExtResource("4_608op")
+
+[node name="ReflectorMirror2" type="Sprite2D" parent="@Node2D@2"]
+rotation = -7.068583
+texture = ExtResource("5_2m2mc")
+
+[node name="@Node2D@3" parent="." instance=ExtResource("2_kox28")]
+position = Vector2(176, 176)
+facing = 4
+
+[node name="Icon2" type="Sprite2D" parent="@Node2D@3"]
+texture = ExtResource("4_608op")
+
+[node name="ReflectorMirror2" type="Sprite2D" parent="@Node2D@3"]
+rotation = -5.497787
+texture = ExtResource("5_2m2mc")
+
+[node name="@Node2D@4" parent="." instance=ExtResource("2_kox28")]
+position = Vector2(112, 176)
+facing = 2
+
+[node name="Icon2" type="Sprite2D" parent="@Node2D@4"]
+texture = ExtResource("4_608op")
+
+[node name="ReflectorMirror2" type="Sprite2D" parent="@Node2D@4"]
+rotation = -3.926991
+texture = ExtResource("5_2m2mc")
+
+[node name="@Node2D@5" parent="." instance=ExtResource("2_kox28")]
+position = Vector2(112, 80)
+
+[node name="Icon2" type="Sprite2D" parent="@Node2D@5"]
+texture = ExtResource("4_608op")
+
+[node name="ReflectorMirror2" type="Sprite2D" parent="@Node2D@5"]
+rotation = -2.3561945
+texture = ExtResource("5_2m2mc")
+
+[node name="@Node2D@6" parent="." instance=ExtResource("2_kox28")]
+position = Vector2(208, 80)
+facing = 6
+
+[node name="Icon2" type="Sprite2D" parent="@Node2D@6"]
+texture = ExtResource("4_608op")
+
+[node name="ReflectorMirror2" type="Sprite2D" parent="@Node2D@6"]
+rotation = -7.068583
+texture = ExtResource("5_2m2mc")
+
+[node name="@Node2D@7" parent="." instance=ExtResource("2_kox28")]
+position = Vector2(208, 208)
+facing = 4
+
+[node name="Icon2" type="Sprite2D" parent="@Node2D@7"]
+texture = ExtResource("4_608op")
+
+[node name="ReflectorMirror2" type="Sprite2D" parent="@Node2D@7"]
+rotation = -5.497787
+texture = ExtResource("5_2m2mc")
+
+[node name="@Node2D@8" parent="." instance=ExtResource("2_kox28")]
+position = Vector2(80, 208)
+facing = 2
+
+[node name="Icon2" type="Sprite2D" parent="@Node2D@8"]
+texture = ExtResource("4_608op")
+
+[node name="ReflectorMirror2" type="Sprite2D" parent="@Node2D@8"]
+rotation = -3.926991
+texture = ExtResource("5_2m2mc")
+
+[node name="@Node2D@9" parent="." instance=ExtResource("2_kox28")]
+position = Vector2(80, 48)
+
+[node name="Icon2" type="Sprite2D" parent="@Node2D@9"]
+texture = ExtResource("4_608op")
+
+[node name="ReflectorMirror2" type="Sprite2D" parent="@Node2D@9"]
+rotation = -2.3561945
+texture = ExtResource("5_2m2mc")
+
+[node name="@Node2D@10" parent="." instance=ExtResource("2_kox28")]
+position = Vector2(240, 48)
+facing = 6
+
+[node name="Icon2" type="Sprite2D" parent="@Node2D@10"]
+texture = ExtResource("4_608op")
+
+[node name="ReflectorMirror2" type="Sprite2D" parent="@Node2D@10"]
+rotation = -7.068583
+texture = ExtResource("5_2m2mc")
+
+[node name="@Node2D@11" parent="." instance=ExtResource("2_kox28")]
+position = Vector2(240, 240)
+facing = 4
+
+[node name="Icon2" type="Sprite2D" parent="@Node2D@11"]
+texture = ExtResource("4_608op")
+
+[node name="ReflectorMirror2" type="Sprite2D" parent="@Node2D@11"]
+rotation = -5.497787
+texture = ExtResource("5_2m2mc")
+
+[node name="@Node2D@12" parent="." instance=ExtResource("2_kox28")]
+position = Vector2(48, 240)
+facing = 2
+
+[node name="Icon2" type="Sprite2D" parent="@Node2D@12"]
+texture = ExtResource("4_608op")
+
+[node name="ReflectorMirror2" type="Sprite2D" parent="@Node2D@12"]
+rotation = -3.926991
+texture = ExtResource("5_2m2mc")
+
+[node name="@Node2D@13" parent="." instance=ExtResource("2_kox28")]
+position = Vector2(48, 16)
+
+[node name="Icon2" type="Sprite2D" parent="@Node2D@13"]
+texture = ExtResource("4_608op")
+
+[node name="ReflectorMirror2" type="Sprite2D" parent="@Node2D@13"]
+rotation = -2.3561945
+texture = ExtResource("5_2m2mc")
+
+[node name="@Node2D@14" parent="." instance=ExtResource("2_kox28")]
+position = Vector2(272, 16)
+facing = 6
+
+[node name="Icon2" type="Sprite2D" parent="@Node2D@14"]
+texture = ExtResource("4_608op")
+
+[node name="ReflectorMirror2" type="Sprite2D" parent="@Node2D@14"]
+rotation = -7.068583
+texture = ExtResource("5_2m2mc")
+
+[node name="@Node2D@15" parent="." instance=ExtResource("2_kox28")]
+position = Vector2(272, 272)
+facing = 4
+
+[node name="Icon2" type="Sprite2D" parent="@Node2D@15"]
+texture = ExtResource("4_608op")
+
+[node name="ReflectorMirror2" type="Sprite2D" parent="@Node2D@15"]
+rotation = -5.497787
+texture = ExtResource("5_2m2mc")
+
+[node name="@Node2D@16" parent="." instance=ExtResource("2_kox28")]
+position = Vector2(16, 272)
+facing = 2
+
+[node name="Icon2" type="Sprite2D" parent="@Node2D@16"]
+texture = ExtResource("4_608op")
+
+[node name="ReflectorMirror2" type="Sprite2D" parent="@Node2D@16"]
+rotation = -3.926991
+texture = ExtResource("5_2m2mc")
+
+[node name="ColorChangerCell" parent="." instance=ExtResource("6_sxh1n")]
+position = Vector2(144, 208)
+cell_color = 1
+
+[node name="ColorChangerBackground2" type="Sprite2D" parent="ColorChangerCell"]
+texture = ExtResource("8_8jhnv")
+
+[node name="Icon2" type="Sprite2D" parent="ColorChangerCell"]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("9_5c2p6")
+
+[node name="@Node2D@17" parent="." instance=ExtResource("6_sxh1n")]
+position = Vector2(144, 240)
+cell_color = 2
+
+[node name="ColorChangerBackground2" type="Sprite2D" parent="@Node2D@17"]
+texture = ExtResource("8_8jhnv")
+
+[node name="Icon2" type="Sprite2D" parent="@Node2D@17"]
+modulate = Color(0, 1, 0, 1)
+texture = ExtResource("9_5c2p6")
+
+[node name="@Node2D@18" parent="." instance=ExtResource("6_sxh1n")]
+position = Vector2(144, 272)
+cell_color = 3
+
+[node name="ColorChangerBackground2" type="Sprite2D" parent="@Node2D@18"]
+texture = ExtResource("8_8jhnv")
+
+[node name="Icon2" type="Sprite2D" parent="@Node2D@18"]
+modulate = Color(1, 1, 0, 1)
+texture = ExtResource("9_5c2p6")
+
+[node name="ShadowCell" parent="." instance=ExtResource("10_66xhf")]
+position = Vector2(16, 16)
+cell_color = 3
+
+[node name="Icon2" type="Sprite2D" parent="ShadowCell"]
+texture = ExtResource("4_608op")
+offset = Vector2(0.1, 0.1)
+
+[node name="ShadowCellNormal2" type="Sprite2D" parent="ShadowCell"]
+modulate = Color(1, 1, 0, 0.5)
+texture = ExtResource("12_1vgot")
+
+[node name="DefocuserCell" parent="." instance=ExtResource("13_4661h")]
+position = Vector2(176, 144)
+rotation = 3.1415925
+facing = 4
+
+[node name="DefocuserCell2" type="Sprite2D" parent="DefocuserCell"]
+texture = ExtResource("15_wdqfi")
+
+[node name="FocuserCell" parent="." instance=ExtResource("16_cxu7b")]
+position = Vector2(208, 144)
+rotation = 3.1415925
+facing = 4
+
+[node name="FocuserCell2" type="Sprite2D" parent="FocuserCell"]
+texture = ExtResource("18_gerog")
+
+[node name="@Node2D@19" parent="." instance=ExtResource("16_cxu7b")]
+position = Vector2(240, 144)
+rotation = 3.1415925
+facing = 4
+
+[node name="FocuserCell2" type="Sprite2D" parent="@Node2D@19"]
+texture = ExtResource("18_gerog")
+
+[node name="@Node2D@20" parent="." instance=ExtResource("16_cxu7b")]
+position = Vector2(272, 144)
+rotation = 3.1415925
+facing = 4
+
+[node name="FocuserCell2" type="Sprite2D" parent="@Node2D@20"]
+texture = ExtResource("18_gerog")
+
+[node name="Player" parent="." instance=ExtResource("19_l3ntf")]
+position = Vector2(144, 144)
+
+[node name="Icon2" type="Sprite2D" parent="Player"]
+texture = ExtResource("21_56sb3")
+offset = Vector2(0.1, 0.1)

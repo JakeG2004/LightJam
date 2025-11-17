@@ -1,151 +1,131 @@
-[gd_scene load_steps=12 format=3]
+[gd_scene load_steps=9 format=3 uid="uid://dil2kg5nl5e1w"]
 
-[ext_resource type="Script" path="res://map/map.gd" id="1_f3act"]
-[ext_resource type="PackedScene" path="res://cells/blocker_cell/blocker_cell.tscn" id="2_cxy21"]
-[ext_resource type="Script" path="res://cells/blocker_cell/blocker_cell.gd" id="3_v3eec"]
-[ext_resource type="Texture2D" path="res://cells/blocker_cell/blocker_cell.png" id="4_1jtsu"]
-[ext_resource type="PackedScene" path="res://cells/shadow_cell/shadow_cell.tscn" id="5_qlvc7"]
-[ext_resource type="Script" path="res://cells/shadow_cell/shadow_cell.gd" id="6_gbmev"]
-[ext_resource type="Texture2D" path="res://cells/base_cell.png" id="7_muost"]
-[ext_resource type="Texture2D" path="res://cells/shadow_cell/shadow_cell_normal.png" id="8_7eqg7"]
-[ext_resource type="PackedScene" path="res://cells/player/player.tscn" id="9_l345v"]
-[ext_resource type="Script" path="res://cells/player/player.gd" id="10_kfjtx"]
-[ext_resource type="Texture2D" path="res://cells/player/player_cell.png" id="11_3ffqk"]
+[ext_resource type="Script" uid="uid://dn15nqcmgtl5e" path="res://map/map.gd" id="1_f3act"]
+[ext_resource type="PackedScene" uid="uid://48owe534x6e4" path="res://cells/blocker_cell/blocker_cell.tscn" id="2_cxy21"]
+[ext_resource type="Texture2D" uid="uid://d0i5j072h34nt" path="res://cells/blocker_cell/blocker_cell.png" id="4_1jtsu"]
+[ext_resource type="PackedScene" uid="uid://jxepbfhdx51v" path="res://cells/shadow_cell/shadow_cell.tscn" id="5_qlvc7"]
+[ext_resource type="Texture2D" uid="uid://dlp70ajmmls06" path="res://cells/base_cell.png" id="7_muost"]
+[ext_resource type="Texture2D" uid="uid://bggvji75mgaju" path="res://cells/shadow_cell/shadow_cell_normal.png" id="8_7eqg7"]
+[ext_resource type="PackedScene" uid="uid://cofps6xaq0fj" path="res://cells/player/player.tscn" id="9_l345v"]
+[ext_resource type="Texture2D" uid="uid://cqq2s743bprow" path="res://cells/player/player_cell.png" id="11_3ffqk"]
 
 [node name="Map" type="Node2D"]
 z_index = -1
 script = ExtResource("1_f3act")
 width = 7
 height = 7
+hint = "Shooting the goal is helpful"
 
-[node name="BlockerCell" type="Node2D" parent="." instance=ExtResource("2_cxy21")]
+[node name="BlockerCell" parent="." instance=ExtResource("2_cxy21")]
 position = Vector2(48, 48)
-script = ExtResource("3_v3eec")
 
-[node name="BlockerCell" type="Sprite2D" parent="BlockerCell"]
+[node name="BlockerCell2" type="Sprite2D" parent="BlockerCell"]
 texture = ExtResource("4_1jtsu")
 
-[node name="@Node2D@2" type="Node2D" parent="." instance=ExtResource("2_cxy21")]
+[node name="@Node2D@2" parent="." instance=ExtResource("2_cxy21")]
 position = Vector2(48, 80)
-script = ExtResource("3_v3eec")
 
-[node name="BlockerCell" type="Sprite2D" parent="@Node2D@2"]
+[node name="BlockerCell2" type="Sprite2D" parent="@Node2D@2"]
 texture = ExtResource("4_1jtsu")
 
-[node name="@Node2D@3" type="Node2D" parent="." instance=ExtResource("2_cxy21")]
+[node name="@Node2D@3" parent="." instance=ExtResource("2_cxy21")]
 position = Vector2(48, 112)
-script = ExtResource("3_v3eec")
 
-[node name="BlockerCell" type="Sprite2D" parent="@Node2D@3"]
+[node name="BlockerCell2" type="Sprite2D" parent="@Node2D@3"]
 texture = ExtResource("4_1jtsu")
 
-[node name="@Node2D@4" type="Node2D" parent="." instance=ExtResource("2_cxy21")]
+[node name="@Node2D@4" parent="." instance=ExtResource("2_cxy21")]
 position = Vector2(48, 144)
-script = ExtResource("3_v3eec")
 
-[node name="BlockerCell" type="Sprite2D" parent="@Node2D@4"]
+[node name="BlockerCell2" type="Sprite2D" parent="@Node2D@4"]
 texture = ExtResource("4_1jtsu")
 
-[node name="@Node2D@5" type="Node2D" parent="." instance=ExtResource("2_cxy21")]
+[node name="@Node2D@5" parent="." instance=ExtResource("2_cxy21")]
 position = Vector2(48, 176)
-script = ExtResource("3_v3eec")
 
-[node name="BlockerCell" type="Sprite2D" parent="@Node2D@5"]
+[node name="BlockerCell2" type="Sprite2D" parent="@Node2D@5"]
 texture = ExtResource("4_1jtsu")
 
-[node name="@Node2D@6" type="Node2D" parent="." instance=ExtResource("2_cxy21")]
+[node name="@Node2D@6" parent="." instance=ExtResource("2_cxy21")]
 position = Vector2(80, 176)
-script = ExtResource("3_v3eec")
 
-[node name="BlockerCell" type="Sprite2D" parent="@Node2D@6"]
+[node name="BlockerCell2" type="Sprite2D" parent="@Node2D@6"]
 texture = ExtResource("4_1jtsu")
 
-[node name="@Node2D@7" type="Node2D" parent="." instance=ExtResource("2_cxy21")]
+[node name="@Node2D@7" parent="." instance=ExtResource("2_cxy21")]
 position = Vector2(112, 176)
-script = ExtResource("3_v3eec")
 
-[node name="BlockerCell" type="Sprite2D" parent="@Node2D@7"]
+[node name="BlockerCell2" type="Sprite2D" parent="@Node2D@7"]
 texture = ExtResource("4_1jtsu")
 
-[node name="@Node2D@8" type="Node2D" parent="." instance=ExtResource("2_cxy21")]
+[node name="@Node2D@8" parent="." instance=ExtResource("2_cxy21")]
 position = Vector2(144, 176)
-script = ExtResource("3_v3eec")
 
-[node name="BlockerCell" type="Sprite2D" parent="@Node2D@8"]
+[node name="BlockerCell2" type="Sprite2D" parent="@Node2D@8"]
 texture = ExtResource("4_1jtsu")
 
-[node name="@Node2D@9" type="Node2D" parent="." instance=ExtResource("2_cxy21")]
+[node name="@Node2D@9" parent="." instance=ExtResource("2_cxy21")]
 position = Vector2(176, 176)
-script = ExtResource("3_v3eec")
 
-[node name="BlockerCell" type="Sprite2D" parent="@Node2D@9"]
+[node name="BlockerCell2" type="Sprite2D" parent="@Node2D@9"]
 texture = ExtResource("4_1jtsu")
 
-[node name="@Node2D@10" type="Node2D" parent="." instance=ExtResource("2_cxy21")]
+[node name="@Node2D@10" parent="." instance=ExtResource("2_cxy21")]
 position = Vector2(80, 48)
-script = ExtResource("3_v3eec")
 
-[node name="BlockerCell" type="Sprite2D" parent="@Node2D@10"]
+[node name="BlockerCell2" type="Sprite2D" parent="@Node2D@10"]
 texture = ExtResource("4_1jtsu")
 
-[node name="@Node2D@11" type="Node2D" parent="." instance=ExtResource("2_cxy21")]
+[node name="@Node2D@11" parent="." instance=ExtResource("2_cxy21")]
 position = Vector2(112, 48)
-script = ExtResource("3_v3eec")
 
-[node name="BlockerCell" type="Sprite2D" parent="@Node2D@11"]
+[node name="BlockerCell2" type="Sprite2D" parent="@Node2D@11"]
 texture = ExtResource("4_1jtsu")
 
-[node name="@Node2D@12" type="Node2D" parent="." instance=ExtResource("2_cxy21")]
+[node name="@Node2D@12" parent="." instance=ExtResource("2_cxy21")]
 position = Vector2(144, 48)
-script = ExtResource("3_v3eec")
 
-[node name="BlockerCell" type="Sprite2D" parent="@Node2D@12"]
+[node name="BlockerCell2" type="Sprite2D" parent="@Node2D@12"]
 texture = ExtResource("4_1jtsu")
 
-[node name="@Node2D@13" type="Node2D" parent="." instance=ExtResource("2_cxy21")]
+[node name="@Node2D@13" parent="." instance=ExtResource("2_cxy21")]
 position = Vector2(176, 48)
-script = ExtResource("3_v3eec")
 
-[node name="BlockerCell" type="Sprite2D" parent="@Node2D@13"]
+[node name="BlockerCell2" type="Sprite2D" parent="@Node2D@13"]
 texture = ExtResource("4_1jtsu")
 
-[node name="@Node2D@14" type="Node2D" parent="." instance=ExtResource("2_cxy21")]
+[node name="@Node2D@14" parent="." instance=ExtResource("2_cxy21")]
 position = Vector2(176, 80)
-script = ExtResource("3_v3eec")
 
-[node name="BlockerCell" type="Sprite2D" parent="@Node2D@14"]
+[node name="BlockerCell2" type="Sprite2D" parent="@Node2D@14"]
 texture = ExtResource("4_1jtsu")
 
-[node name="@Node2D@15" type="Node2D" parent="." instance=ExtResource("2_cxy21")]
+[node name="@Node2D@15" parent="." instance=ExtResource("2_cxy21")]
 position = Vector2(176, 112)
-script = ExtResource("3_v3eec")
 
-[node name="BlockerCell" type="Sprite2D" parent="@Node2D@15"]
+[node name="BlockerCell2" type="Sprite2D" parent="@Node2D@15"]
 texture = ExtResource("4_1jtsu")
 
-[node name="@Node2D@16" type="Node2D" parent="." instance=ExtResource("2_cxy21")]
+[node name="@Node2D@16" parent="." instance=ExtResource("2_cxy21")]
 position = Vector2(176, 144)
-script = ExtResource("3_v3eec")
 
-[node name="BlockerCell" type="Sprite2D" parent="@Node2D@16"]
+[node name="BlockerCell2" type="Sprite2D" parent="@Node2D@16"]
 texture = ExtResource("4_1jtsu")
 
-[node name="ShadowCell" type="Node2D" parent="." groups=["Enemies"] instance=ExtResource("5_qlvc7")]
+[node name="ShadowCell" parent="." instance=ExtResource("5_qlvc7")]
 position = Vector2(144, 112)
-script = ExtResource("6_gbmev")
 
-[node name="Icon" type="Sprite2D" parent="ShadowCell"]
+[node name="Icon2" type="Sprite2D" parent="ShadowCell"]
 texture = ExtResource("7_muost")
 offset = Vector2(0.1, 0.1)
 
-[node name="ShadowCellNormal" type="Sprite2D" parent="ShadowCell"]
+[node name="ShadowCellNormal2" type="Sprite2D" parent="ShadowCell"]
 modulate = Color(1, 1, 1, 0.5)
 texture = ExtResource("8_7eqg7")
 
-[node name="Player" type="Node2D" parent="." instance=ExtResource("9_l345v")]
+[node name="Player" parent="." instance=ExtResource("9_l345v")]
 position = Vector2(80, 112)
-script = ExtResource("10_kfjtx")
 
-[node name="Icon" type="Sprite2D" parent="Player"]
+[node name="Icon2" type="Sprite2D" parent="Player"]
 texture = ExtResource("11_3ffqk")
 offset = Vector2(0.1, 0.1)

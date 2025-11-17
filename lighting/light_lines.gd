@@ -4,7 +4,7 @@ const LINE_SIZE := 32.0
 var flashing: bool = false
 var flash_time := 0.0
 const FLASH_DURATION := .5
-const FLASH_HOLD = 0.75
+const FLASH_HOLD = 0.25
 const FLASH_RADIUS = 150
 
 func _ready():

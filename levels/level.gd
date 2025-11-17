@@ -8,6 +8,7 @@ static var instance
 const VERTICAL_FILL_PERCENTAGE: float = .9
 
 var gems: Array[Node]
+var level_finished: bool = false
 
 @onready var viewport := $Lighting/SubViewport
 @onready var game_camera := $Camera as Camera2D
@@ -25,13 +26,17 @@ func _process(_dt):
 	apply_screen_fit()
 	
 func add_gems():
-	await get_tree().create_timer(0.1).timeout
+	#gems.clear()
+	#gems = get_tree().get_nodes_in_group("Enemies")
 	for gem: ShadowCell in gems:
 		gem.illuminated.connect(on_gem_illuminated)
+	print(gems)
+
 
 func on_gem_illuminated(gem: Node):
 	gems.erase(gem)
-	if(gems.size() <= 0):
+	if(gems.size() <= 0 && !level_finished):
+		level_finished = true
 		GameEvents.next_level.emit()
 		print("Next level")
 		
@@ -77,7 +82,32 @@ func save_as_scene():
 	var err = ResourceSaver.save(scene, final_path)
 	if err != OK:
 		push_error("Failed to save scene: %s" % final_path)
+		
+func save_as_scene_ingame():
+	var base_dir := "user://levels/"
+	var dir := DirAccess.open(base_dir)
+	if dir == null:
+		DirAccess.make_dir_recursive_absolute(base_dir)
+		dir = DirAccess.open(base_dir)
 
+	# Find the next available level number
+	var level_index := 0
+	while true:
+		var file_name := "level%d.tscn" % level_index
+		if not dir.file_exists(file_name):
+			break
+		level_index += 1
+
+	var final_path := base_dir + "level%d.tscn" % level_index
+	print("Saving to: ", final_path)
+
+	set_children_owner(map, map)
+		
+	var scene := PackedScene.new()
+	scene.pack(map)
+	var err = ResourceSaver.save(scene, final_path)
+	if err != OK:
+		push_error("Failed to save scene: %s" % final_path)
 
 func center_on_screen():
 	if(map == null):

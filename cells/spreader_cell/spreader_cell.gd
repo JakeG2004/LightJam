@@ -15,21 +15,21 @@ func _ready() -> void:
 			"SpreaderCellLeft": left_wing = child
 			_: continue
 	
-func _process(_delta: float) -> void:
+"""func _process(_delta: float) -> void:
 	if(left_wing == null || right_wing == null):
 		queue_free()
 		if(left_wing != null):
 			left_wing.queue_free()
 		if(right_wing != null):
-			right_wing.queue_free()
+			right_wing.queue_free()"""
 			
-func _exit_tree() -> void:
+"""func _exit_tree() -> void:
 	# Only run cleanup if we are actually being deleted
 	if is_queued_for_deletion():
 		if left_wing:
 			left_wing.queue_free()
 		if right_wing:
-			right_wing.queue_free()
+			right_wing.queue_free()"""
 	
 		
 func on_place():

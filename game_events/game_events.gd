@@ -8,3 +8,9 @@ signal next_level
 
 @warning_ignore("unused_signal")
 signal flash_level
+
+@warning_ignore("unused_signal")
+signal player_shot
+
+@warning_ignore("unused_signal")
+signal out_of_lasers

@@ -40,12 +40,21 @@ func change_cell_strength():
 	var child: Cell = get_child(0)
 	child.change_strength()
 
-func _input(event):
-	if event is InputEventMouseButton:
+"""func _input(event):
+	if event is InputEventMouseButton and event.pressed:
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			placing = event.pressed
+			#placing = event.pressed
+			place_piece()"""
 
-			
+func _input(event):
+	if event is InputEventMouseButton and event.pressed:
+		if event.button_index == MOUSE_BUTTON_LEFT && get_child_count() > 0 && map.is_inbounds_at(global_position):
+			var child = get_child(0)
+			if(child is not Cell):
+				return
+			map.set_at(global_position, child)
+			child.reparent(map)
+			child.on_place()
 	if event is InputEventKey:
 		# Get R Keycode to rotate object
 		if event.pressed and event.keycode == KEY_R:

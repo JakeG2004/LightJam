@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=3 uid="uid://cw11sc2jdrfds"]
+
+[ext_resource type="Script" uid="uid://ci4axlnwkqiml" path="res://scenes/UI/main_menu.gd" id="1_qwnig"]
+[ext_resource type="PackedScene" uid="uid://cisih7ral0pu4" path="res://levels/level.tscn" id="2_5jstl"]
+[ext_resource type="PackedScene" path="res://levels/menu_bg.tscn" id="2_yonvy"]
+
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("high_score_text")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qwnig")
+high_score_text = NodePath("VBoxContainer/HighScoreText")
+
+[node name="Level" parent="." instance=ExtResource("2_5jstl")]
+
+[node name="Map" parent="Level" instance=ExtResource("2_yonvy")]
+
+[node name="Title" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -207.0
+offset_top = 10.315
+offset_right = 207.0
+offset_bottom = 124.315
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 61
+bbcode_enabled = true
+text = "[center]Photo-Frenzy[/center]"
+autowrap_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -163.427
+offset_top = -135.625
+offset_right = 163.42798
+offset_bottom = 152.375
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 19
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "Play"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "Quit"
+
+[node name="HighScoreText" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 63.015)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "[center]High Score: 0[/center]"
+
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="play_game"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="quit"]

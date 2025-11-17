@@ -16,8 +16,6 @@ func change_color():
 		CellColor.YELLOW: color = Color.YELLOW
 		
 	icon.modulate = color
-	
-	
 
 func laser_in(in_laser: Laser) -> void:
 	var color : Color

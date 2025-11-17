@@ -11,8 +11,8 @@ script = ExtResource("1_lpwxl")
 [node name="MouseFollower" parent="." instance=ExtResource("2_4es38")]
 
 [node name="Map" parent="." instance=ExtResource("2_yj3bx")]
-width = 3
-height = 3
+width = 7
+height = 7
 
 [node name="UI" type="Node" parent="."]
 
@@ -34,9 +34,9 @@ layout_mode = 2
 text = "Player Cell
 "
 
-[node name="EnemyCell" type="Button" parent="UI/VBoxContainer"]
+[node name="GemCell" type="Button" parent="UI/VBoxContainer"]
 layout_mode = 2
-text = "EnemyCell"
+text = "Gem Cell"
 
 [node name="ReflectorCell" type="Button" parent="UI/VBoxContainer"]
 layout_mode = 2
@@ -87,7 +87,7 @@ visible = false
 [connection signal="text_submitted" from="UI/VBoxContainer/Dimension" to="." method="set_dimension"]
 [connection signal="pressed" from="UI/VBoxContainer/Erase" to="." method="add_base_cell"]
 [connection signal="pressed" from="UI/VBoxContainer/PlayerCell" to="." method="add_player_cell"]
-[connection signal="pressed" from="UI/VBoxContainer/EnemyCell" to="." method="add_shadow_cell"]
+[connection signal="pressed" from="UI/VBoxContainer/GemCell" to="." method="add_shadow_cell"]
 [connection signal="pressed" from="UI/VBoxContainer/ReflectorCell" to="." method="add_reflector_cell"]
 [connection signal="pressed" from="UI/VBoxContainer/BlockerCell" to="." method="add_blocker_cell"]
 [connection signal="pressed" from="UI/VBoxContainer/ColorChangerCell" to="." method="add_color_changer_cell"]

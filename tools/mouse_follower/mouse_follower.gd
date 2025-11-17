@@ -3,6 +3,7 @@ class_name MouseFollower
 extends Node2D
 
 var map: Map
+var placing: bool = false
 
 func _ready() -> void:
 	map = get_parent().get_child(1)
@@ -10,7 +11,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	global_position = map.fit_to_grid(get_global_mouse_position())
-
+	if(placing):
+		place_piece()
 
 func delete_children():
 	for child in get_children():
@@ -22,8 +24,7 @@ func rotate_piece():
 		return
 		
 	var child: Cell = get_child(0)
-	child.facing = (child.set_direction_in_bounds(child.facing + 2))
-	child.rotate(-PI / 2)
+	child.rotate_piece()
 	
 func change_piece_color():
 	if(get_child_count() <= 0):
@@ -31,14 +32,19 @@ func change_piece_color():
 		
 	var child: Cell = get_child(0)
 	child.change_color()
+	
+func change_cell_strength():
+	if(get_child_count() <= 0):
+		return
+		
+	var child: Cell = get_child(0)
+	child.change_strength()
 
 func _input(event):
-	if event is InputEventMouseButton and event.pressed:
-		if event.button_index == MOUSE_BUTTON_LEFT && get_child_count() > 0 && map.is_inbounds_at(global_position):
-			var child: Cell = get_child(0)
-			map.set_at(global_position, child)
-			child.reparent(map)
-			child.on_place()
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			placing = event.pressed
+
 			
 	if event is InputEventKey:
 		# Get R Keycode to rotate object
@@ -48,3 +54,25 @@ func _input(event):
 		if event.pressed and event.keycode == KEY_C:
 			change_piece_color()
 			
+		if event.pressed and event.keycode == KEY_S:
+			change_cell_strength()
+			
+
+func place_piece():
+	if(get_child_count() == 0 || !map.is_inbounds_at(global_position)):
+		return
+	var child:= get_child(0)
+	if(child is not Cell):
+		return
+	map.set_at(global_position, child)
+	child.reparent(map)
+	child.on_place()
+			
+	await get_tree().create_timer(.1).timeout
+	
+	if(child == null):
+		return
+		
+	var new_piece: Cell = child.duplicate()
+	add_child(new_piece)
+	new_piece.global_position = global_position

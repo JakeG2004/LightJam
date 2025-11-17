@@ -7,14 +7,17 @@ var direction: int
 func laser_in(_in_laser: Laser) -> void:
 	GameEvents.game_over.emit()
 
-func _unhandled_input(event: InputEvent):
-	if event.is_action_pressed("shoot"):
-		shoot()
-
-func _input(event: InputEvent):
+func _input(event: InputEvent) -> void:
+	# Track mouse movement for cursor
 	if event is InputEventMouseMotion:
 		cursor = event.position
 		preview_laser_direction()
+
+	# Shoot on left mouse click
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			shoot()
+
 		
 
 func shoot():

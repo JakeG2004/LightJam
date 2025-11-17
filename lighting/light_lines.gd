@@ -9,6 +9,7 @@ const FLASH_RADIUS = 150
 
 func _ready():
 	GameEvents.flash_level.connect(_on_flash_level)
+	GameEvents.next_level.connect(_on_flash_level)
 	
 func _on_flash_level():
 	flashing = true

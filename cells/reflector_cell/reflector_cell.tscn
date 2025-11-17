@@ -1,10 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://s63plgwf5nnq"]
+[gd_scene load_steps=4 format=3 uid="uid://s63plgwf5nnq"]
 
 [ext_resource type="Script" uid="uid://bak2toqbsreg" path="res://cells/reflector_cell/reflector_cell.gd" id="1_poiik"]
-[ext_resource type="Texture2D" uid="uid://274jr7c7k007" path="res://cells/reflector_cell/reflector_cell.png" id="2_ypm0p"]
+[ext_resource type="Texture2D" uid="uid://dlp70ajmmls06" path="res://cells/base_cell.png" id="2_vc1ft"]
+[ext_resource type="Texture2D" uid="uid://cs3gogmq4bt6c" path="res://cells/reflector_cell/reflector_mirror.png" id="3_6njkv"]
 
 [node name="ReflectorCell" type="Node2D"]
 script = ExtResource("1_poiik")
 
 [node name="Icon" type="Sprite2D" parent="."]
-texture = ExtResource("2_ypm0p")
+texture = ExtResource("2_vc1ft")
+
+[node name="ReflectorMirror" type="Sprite2D" parent="."]
+rotation = -2.3561945
+texture = ExtResource("3_6njkv")

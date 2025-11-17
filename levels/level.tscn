@@ -7,3 +7,8 @@
 script = ExtResource("1_80vhd")
 
 [node name="Lighting" parent="." instance=ExtResource("3_cwqvt")]
+offset_right = 512.0
+offset_bottom = 512.0
+
+[node name="Camera" type="Camera2D" parent="."]
+zoom = Vector2(0.99, 0.99)

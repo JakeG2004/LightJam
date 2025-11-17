@@ -3,9 +3,12 @@ extends Node2D
 const dir_path: String = "res://levels/"
 var cur_lvl_idx: int = 0
 var level: Level
+var dead: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	GameEvents.next_level.connect(wait_and_load_next_level)
+	GameEvents.game_over.connect(game_over)
 	load_next_level()
 	for child in get_children():
 		if(child is Level):
@@ -15,6 +18,18 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
+	
+func game_over():
+	dead = true
+	await get_tree().create_timer(5).timeout
+	GameManager.instance.set_high_score(cur_lvl_idx)
+	GameManager.instance.load_scene("main menu")
+	
+func wait_and_load_next_level():
+	await get_tree().create_timer(.5).timeout
+	if(dead):
+		return
+	load_next_level()
 
 func load_next_level():
 	# Delete current map
@@ -26,15 +41,20 @@ func load_next_level():
 	
 	# Out of levels
 	if(next_level == null):
-		pass
+		print("Out of levels")
+		GameManager.instance.set_high_score(cur_lvl_idx)
+		return
 		
 	# Load the next level
 	var new_level := next_level.instantiate()
 	Level.instance.map = new_level
 	Level.instance.add_child(new_level)
+	Level.instance.add_gems()
 	
 	# Trigger the level flash at the start
 	GameEvents.flash_level.emit()
+	
+	cur_lvl_idx += 1
 
 func get_next_level() -> PackedScene:
 	# Specify the levels folder

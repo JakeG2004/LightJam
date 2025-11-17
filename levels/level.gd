@@ -5,26 +5,42 @@ extends Node2D
 
 static var map: Map
 static var instance
+const VERTICAL_FILL_PERCENTAGE: float = .9
 
-var enemies: Array[Node]
+var gems: Array[Node]
+
 @onready var viewport := $Lighting/SubViewport
+@onready var game_camera := $Camera as Camera2D
 
 func _enter_tree():
 	map = $Map
 	instance = self
 
 func _ready():
-	enemies = get_tree().get_nodes_in_group("Enemies")
-	for enemy: ShadowCell in enemies:
-		enemy.died.connect(on_enemy_death)
+	add_gems()
+	apply_screen_fit()
 
 func _process(_dt):
 	center_on_screen()
+	apply_screen_fit()
+	
+func add_gems():
+	await get_tree().create_timer(0.1).timeout
+	for gem: ShadowCell in gems:
+		gem.illuminated.connect(on_gem_illuminated)
 
-func on_enemy_death(enemy: Node):
-	enemies.erase(enemy)
-	if(enemies.size() <= 0):
+func on_gem_illuminated(gem: Node):
+	gems.erase(gem)
+	if(gems.size() <= 0):
 		GameEvents.next_level.emit()
+		print("Next level")
+		
+
+func get_all_gems(node: Node):
+	if node is ShadowCell:
+		gems.append(node)
+	for child in node.get_children():
+		get_all_gems(child)
 		
 func set_children_owner(node: Node, new_owner: Node):
 	# Set the owner for the current node
@@ -64,11 +80,22 @@ func save_as_scene():
 
 
 func center_on_screen():
+	if(map == null):
+		return
+		
 	var screen_size := Vector2(
 		ProjectSettings.get_setting("display/window/size/viewport_width"),
 		ProjectSettings.get_setting("display/window/size/viewport_height"),
 	)
+		
 	global_position = (screen_size - map.render_size()) / 2.0
 	
 	if viewport.size != Vector2i(map.render_size()):
 		viewport.size = Vector2i(map.render_size())
+
+func apply_screen_fit():
+	if(map == null):
+		return
+		
+	game_camera.position = map.render_size() / 2
+	game_camera.zoom = Vector2(ProjectSettings.get_setting("display/window/size/viewport_height") / map.render_size().x, ProjectSettings.get_setting("display/window/size/viewport_height") / map.render_size().y) * VERTICAL_FILL_PERCENTAGE

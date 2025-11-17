@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c6xiedaahxhj2" path="res://cells/focuser_cell/focuser.gd" id="1_l523q"]
 [ext_resource type="Texture2D" uid="uid://dr6smyxw2t8fd" path="res://cells/focuser_cell/focuser_cell.png" id="2_jfwnx"]
 
-[node name="DefocuserCell" type="Node2D"]
+[node name="FocuserCell" type="Node2D"]
 script = ExtResource("1_l523q")
 
 [node name="FocuserCell" type="Sprite2D" parent="."]

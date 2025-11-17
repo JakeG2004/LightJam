@@ -8,6 +8,16 @@ const LaserScene := preload("res://laser/laser.tscn")
 # Publicly accessible variables
 @export var facing: int = 0
 
+func change_strength():
+	pass
+	
+func change_color():
+	pass
+	
+func rotate_piece():
+	facing = set_direction_in_bounds(facing + 2)
+	rotate(-PI / 2)
+
 # For the base node, delete whatever is in its spot
 func on_place():
 	if get_script() == Cell:
